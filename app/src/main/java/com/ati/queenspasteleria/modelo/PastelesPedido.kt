@@ -10,7 +10,7 @@ class PastelesPedido(
          nombre:String,
          id:Int,
          descripcion: String,
-         fotografia:String
+         fotografia:List<String>
 ):PastelesVenta(
         precio,
         nombre,

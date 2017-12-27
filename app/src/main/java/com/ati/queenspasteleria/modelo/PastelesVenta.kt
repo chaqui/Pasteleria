@@ -8,5 +8,6 @@ open class  PastelesVenta(
         var nombre:String,
         var id:Int,
         var descripcion: String,
-        var fotografia:String
+        var fotografia:List<String>,
+        var ocasion: List<Ocasion>
 )

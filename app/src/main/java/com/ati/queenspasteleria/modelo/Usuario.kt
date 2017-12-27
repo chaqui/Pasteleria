@@ -10,7 +10,8 @@ package com.ati.queenspasteleria.modelo
         var telefono:Int,
         var id:Int,
         var nickname: String,
-        var contrasenia: String
+        var contrasenia: String,
+        val tipo:String = "usuario"
 ){
     fun crearUsuario(){
 

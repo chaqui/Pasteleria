@@ -10,11 +10,13 @@ class PastelesPedido(
          nombre:String,
          id:Int,
          descripcion: String,
-         fotografia:List<String>
+         fotografia:List<String>,
+        ocasion:List<Ocasion>
 ):PastelesVenta(
         precio,
         nombre,
         id,
         descripcion,
-        fotografia
+        fotografia,
+        ocasion
 )

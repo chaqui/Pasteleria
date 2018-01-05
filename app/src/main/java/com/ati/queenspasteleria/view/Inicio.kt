@@ -1,4 +1,4 @@
-package com.ati.queenspasteleria
+package com.ati.queenspasteleria.view
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -9,7 +9,7 @@ import android.os.Handler
 import android.view.Gravity
 import android.widget.Toast
 import android.content.Intent
-
+import com.ati.queenspasteleria.R
 
 
 class Inicio : AppCompatActivity() {

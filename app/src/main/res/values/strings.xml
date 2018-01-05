@@ -1,9 +1,16 @@
 <resources>
-    <string name="app_name">queens pasteleria</string>
+    <string name="app_name">Queens pasteleria</string>
     <string name="title_activity_principal">Principal</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
+    <string name="sin_usuario"> Inicie Sesion o cree usuario</string>
     <string name="action_settings">Settings</string>
+
+    <!-- strings del menu -->
+    <string name="pasteles">Pasteles</string>
+    <string name="Pedidos">Pedidos</string>
+    <string name="Salir">Salir</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="Usuario">Perfil De Usuario</string>
 </resources>

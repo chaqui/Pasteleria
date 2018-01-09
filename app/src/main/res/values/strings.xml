@@ -22,8 +22,9 @@
 
     <!--- strings formulario-->
     <string name="nombre_formulario">Nombre:</string>
-    <string name="ontrasenia_formulario"> Contraseña:</string>
+    <string name="contrasenia_formulario"> Contraseña:</string>
     <string name="contrasena_olvidada_formulario">Se me olvido la contraseña</string>
-    <string name="iniciar_sesion_formulario">Iniciar Sesión</string>
+    <string name="iniciar_sesion">Iniciar Sesión</string>
     <string name="crear_usuario_formulario">Crear Usuario</string>
+    <string name="usuario_formulario">Usuario:</string>
 </resources>

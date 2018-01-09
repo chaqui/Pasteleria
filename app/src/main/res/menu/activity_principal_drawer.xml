@@ -7,7 +7,7 @@
         <item
             android:id="@+id/Pasteles"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/pasteles" />
+            android:title="@string/productos" />
         <item
             android:id="@+id/Pedidos"
             android:icon="@drawable/ic_menu_slideshow"

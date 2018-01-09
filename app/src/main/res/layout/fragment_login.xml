@@ -58,13 +58,16 @@
                 android:theme="@style/RaiseButtonDark"
                 android:text="@string/iniciar_sesion" />
 
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/contrasena_olvidada_formulario"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Notification.Line2.Media" />
+
         </LinearLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </RelativeLayout>
     </LinearLayout>
 
 </FrameLayout>

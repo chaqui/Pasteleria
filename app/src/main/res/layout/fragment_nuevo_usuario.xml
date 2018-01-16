@@ -5,8 +5,153 @@
     tools:context="com.ati.queenspasteleria.view.fragments.NuevoUsuarioFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/nav_header_height"
+        android:padding="@dimen/fab_margin">
+
+        <!-- nombre del Usuario -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/txINombre"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/nombre_formulario"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <!-- apellidos del Usuario -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/txIApellido"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/apellido_formulario"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <!-- nit del Usuario -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/txINit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/nit"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <!-- Direccion del Usuario -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/txIDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/direccion"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <!-- Telefono del Usuario -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/txITelefono"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/telefono_formulario"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:inputType="number"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <!-- Correo electronico del Usuario -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/txICorreoElectronico"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/correo_formulario"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:inputType="textEmailAddress" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <!-- nickname del Usuario -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/txINickName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/usuario_formulario"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <!--contraseñas del Usuario -->
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/txIContrasenia1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/contrasenia_formulario"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:inputType="textPassword" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/txIContrasenia2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/repita_contrasenia_formulario"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:inputType="textPassword" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/RaiseButtonDark"
+            android:text="@string/crear_usuario_formulario" />
+
+
+    </LinearLayout>
 </FrameLayout>

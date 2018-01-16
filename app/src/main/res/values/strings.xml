@@ -21,10 +21,16 @@
     <string name="cambiar_contrasenia">Cambiar Contraseña</string>
 
     <!--- strings formulario-->
-    <string name="nombre_formulario">Nombre:</string>
+    <string name="nombre_formulario">Nombres:</string>
+    <string name="apellido_formulario">Apellidos:</string>
     <string name="contrasenia_formulario"> Contraseña:</string>
+    <string name="repita_contrasenia_formulario">Repita la  contraseña:</string>
     <string name="contrasena_olvidada_formulario">Se me olvido la contraseña</string>
     <string name="iniciar_sesion">Iniciar Sesión</string>
     <string name="crear_usuario_formulario">Crear Usuario</string>
     <string name="usuario_formulario">Usuario:</string>
+    <string name="nit">Nit:</string>
+    <string name="direccion">Dirección:</string>
+    <string name="correo_formulario">Correo:</string>
+    <string name="telefono_formulario">Telefono:</string>
 </resources>

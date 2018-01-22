@@ -6,4 +6,9 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="espacio">84dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <!--dimensiones para el cardView-->
+    <dimen name="paddingCard">8dp</dimen>
+    <dimen name="cornerRadiusCardView">4dp</dimen>
+    <dimen name="MarginCardView">2dp</dimen>
 </resources>

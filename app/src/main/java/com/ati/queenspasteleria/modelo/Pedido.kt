@@ -12,7 +12,7 @@ import java.util.*
         var telefonoContacto: String,
         var correoContacto:String,
         var boletaDeposito:String,
-        var PastelesPedido:List<PastelesPedido>
+        var ProductoPedido:List<ProductoPedido>
 ){
     fun crearPedido(){
 

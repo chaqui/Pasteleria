@@ -3,7 +3,7 @@ package com.ati.queenspasteleria.modelo
 /**
  * Created by josue on 18/12/17.
  */
-class PastelesPedido(
+class ProductoPedido(
         var cantidad: Int,
         var rebanadas: Int,
          precio:Float,
@@ -12,7 +12,7 @@ class PastelesPedido(
          descripcion: String,
          fotografia:List<String>,
         ocasion:List<Ocasion>
-):PastelesVenta(
+):ProductoVenta(
         precio,
         nombre,
         id,

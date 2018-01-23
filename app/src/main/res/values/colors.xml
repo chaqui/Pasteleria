@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF5252</color>
     <!-- color de textos -->
     <color name="titleHeader">#000000</color>
+    <!-- color de fondo -->
+    <color name="grisFondo">#f0f2f5</color>
+    <color name="blancoFondo">#ffffff</color>
 </resources>

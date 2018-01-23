@@ -24,20 +24,20 @@ class CategoriasFragment : Fragment() {
         // Inflate the layout for this fragment
         var view = inflater!!.inflate(R.layout.fragment_categorias, container, false)
         //llamamos el recicler para controlarlo
-        var categoriasRecycler  =  view.findViewById<RecyclerView>(R.id.listCategorias)
+        var listCategorias  =  view.findViewById<RecyclerView>(R.id.listCategorias)
         //creamos el configurador del recicler
         var linearLayoutManager = LinearLayoutManager(context)
         //colocamos el recycler en forma Vertical
         linearLayoutManager.orientation= LinearLayoutManager.VERTICAL
         //se lo implementamos al recycler
-        categoriasRecycler.layoutManager = linearLayoutManager
+        listCategorias.layoutManager = linearLayoutManager
 
         var pictureAdapterCategorias = PictureAdapterCategorias(
                 buidCategorias(),
                 R.layout.cardview_categoria,
                 activity
         )
-
+        listCategorias.adapter=pictureAdapterCategorias
         return view
 
     }

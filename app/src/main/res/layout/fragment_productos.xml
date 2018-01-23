@@ -5,7 +5,7 @@
     tools:context="com.ati.queenspasteleria.view.fragments.ProductosFragment">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/listCategorias"
+        android:id="@+id/listProductos"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

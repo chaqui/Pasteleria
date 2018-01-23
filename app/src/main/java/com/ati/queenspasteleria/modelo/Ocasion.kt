@@ -3,7 +3,15 @@ package com.ati.queenspasteleria.modelo
 /**
  * Created by josue on 27/12/17.
  */
-data class Ocasion(
-        var id: Int,
-        var nombe: String
-)
+ class Ocasion(
+
+){
+    var id =0
+    var nombre =""
+
+
+    fun seleccionarOcasion(id:Int):Ocasion{
+        var ocasion = Ocasion()
+        return ocasion
+    }
+}

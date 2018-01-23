@@ -7,4 +7,35 @@
     android:layout_height="wrap_content"
     cardview:cardCornerRadius="@dimen/cornerRadiusCardView"
     android:layout_margin="@dimen/MarginCardView">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iVProducto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            cardview:srcCompat="@drawable/side_nav_bar" />
+
+        <TextView
+            android:id="@+id/txWNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/txWOcasion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/txWDescripcion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+    </FrameLayout>
+
 </android.support.v7.widget.CardView>

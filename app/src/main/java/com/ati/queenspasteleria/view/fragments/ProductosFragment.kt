@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ati.queenspasteleria.R
-import com.ati.queenspasteleria.modelo.Categoria
 import com.ati.queenspasteleria.modelo.ProductoVenta
 import com.ati.queenspasteleria.view.adapter.ProductosAdapter
 

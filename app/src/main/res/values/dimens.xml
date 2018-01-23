@@ -10,5 +10,8 @@
     <!--dimensiones para el cardView-->
     <dimen name="paddingCard">8dp</dimen>
     <dimen name="cornerRadiusCardView">4dp</dimen>
-    <dimen name="MarginCardView">2dp</dimen>
+    <dimen name="MarginCardView">5dp</dimen>
+    <dimen name="height_CardView">100dp</dimen>
+    <dimen name="padding_text">12dp</dimen>
+    <dimen name="size_text">10dp</dimen>
 </resources>

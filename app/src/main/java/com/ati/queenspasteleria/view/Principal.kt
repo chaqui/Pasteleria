@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.ati.queenspasteleria.R
+import com.ati.queenspasteleria.Settings.ConfiguracionUsuario
 import kotlinx.android.synthetic.main.activity_principal.*
 import kotlinx.android.synthetic.main.app_bar_principal.*
 
@@ -51,7 +52,19 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
-            R.id.action_settings -> return true
+            R.id.Pasteles -> return true
+            R.id.Pedidos -> return true
+            R.id.usuario ->return true
+            R.id.login->{
+                 var configuracionUsuario = ConfiguracionUsuario()
+                if(!configuracionUsuario.verificarUsuarioInicioSesion()){
+
+                }
+                else{
+                    configuracionUsuario.eliminarRegistroUsario()
+                }
+                return true
+            }
             else -> return super.onOptionsItemSelected(item)
         }
     }

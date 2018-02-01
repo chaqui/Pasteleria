@@ -7,6 +7,7 @@ package com.ati.queenspasteleria.Settings
 //Clase para almacenar las configuraciones del sistema
 class Settings(){
     companion object {
-        val url =""
+        val url ="aa"
+        var iniciadaSesion:Boolean = false
     }
 }

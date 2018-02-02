@@ -102,13 +102,13 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
     }
 
     fun preguntarPorSalir(context:Context){
-        val mensajeDeAlerta = AlertDialog.Builder(context).create()
+        var mensajeDeAlerta = AlertDialog.Builder(context).create()
         mensajeDeAlerta.setTitle("alerta!")
         mensajeDeAlerta.setMessage("¿Quiere Cerrar Sesion?")
         mensajeDeAlerta.setButton(AlertDialog.BUTTON_POSITIVE,"si",{
             dialogInterface, i ->
             val configuracionDeUsuario = ConfiguracionUsuario()
-            configuracionDeUsuario.eliminarRegistroUsario()
+            configuracionDeUsuario.eliminarRegistroUsuario(this)
             transaction.replace(R.id.fragmentPrincipal,ProductosFragment()).commit()
             
         })

@@ -47,4 +47,6 @@ class CategoriasFragment : Fragment() {
         return categorias
     }
 
+
+
 }// Required empty public constructor

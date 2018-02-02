@@ -1,13 +1,19 @@
 package com.ati.queenspasteleria.view.fragments
 
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.support.design.widget.TextInputEditText
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import com.ati.queenspasteleria.ExcepcionCampoVacio
 
 import com.ati.queenspasteleria.R
+import com.ati.queenspasteleria.modelo.Usuario
+import junit.framework.Assert
 
 
 /**
@@ -19,7 +25,95 @@ class NuevoUsuarioFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater!!.inflate(R.layout.fragment_nuevo_usuario, container, false)
+         var view=  inflater!!.inflate(R.layout.fragment_nuevo_usuario, container, false)
+
+        //obteniendo cada objeto de la vista
+        var txINombre = view.findViewById<TextInputEditText>(R.id.txINombre)
+        var txIApellido = view.findViewById<TextInputEditText>(R.id.txIApellido)
+        var txINit = view.findViewById<TextInputEditText>(R.id.txINit)
+        var txIDireccion = view.findViewById<TextInputEditText>(R.id.txIDireccion)
+        var txITelefono = view.findViewById<TextInputEditText>(R.id.txITelefono)
+        var txICorreoElectronico = view.findViewById<TextInputEditText>(R.id.txICorreoElectronico)
+        var txINickName = view.findViewById<TextInputEditText>(R.id.txINickName)
+        var txIContrasenia1 = view.findViewById<TextInputEditText>(R.id.txIContrasenia1)
+        var txIContrasenia2 = view.findViewById<TextInputEditText>(R.id.txIContrasenia2)
+        var btCrearUsuario = view.findViewById<Button>(R.id.btCrearUsuario)
+
+        btCrearUsuario.setOnClickListener{
+            try {
+
+                //onvertimos todos los campos a variables utilizables
+                //strings con verificacion si estan vacios los campos
+                var nombre =verificarSiEstaVacio( txINombre.text.toString(), "nombre")
+                var apellido =verificarSiEstaVacio(txIApellido.text.toString(), "apellido")
+                var direccion = verificarSiEstaVacio(txIDireccion.text.toString(),"direccion")
+                var nickName = verificarSiEstaVacio(txINickName.text.toString(),"nickname")
+                var contrasenia1 = verificarSiEstaVacio( txIContrasenia1.text.toString(),"contraseña")
+                var contrasenia2 =  verificarSiEstaVacio(txIContrasenia2.text.toString(),"contraseña repetida")
+                var correoElectronico = txICorreoElectronico.text.toString()
+
+
+                //enteros con verificacion si ingreso el numero de telefono
+                var telefono =Integer.parseInt(verificarSiEstaVacio(txITelefono.text.toString(),
+                        "telefono"))
+                var nit =Integer.parseInt(
+                        if(txINit.text.toString().equals("")) "0" else txINit.text.toString())
+
+                //verificamos si las contraseñas son correctas
+                if(contrasenia1.equals(contrasenia2)){
+
+                    //creación del objeto de usuario
+                    var usuario = Usuario(nombre,apellido,direccion,telefono,0,nickName,
+                            correoElectronico,contrasenia1,nit)
+                    usuario.crearUsuario() //enviar el objeto usuario para almacenar
+                }
+                else{
+                    throw Exception()
+                }
+
+
+            }
+            //excepcion si las contraseñas no son iguales
+            catch (e:Exception){
+                mostrarMensajeDeError("disculpe las contraseñas que ha ingresado no " +
+                        "son iguales")
+
+            }
+            //excepcion si los campos estan vacios
+            catch (e:ExcepcionCampoVacio){
+                mostrarMensajeDeError("disculpe el campo "+e.campo+"se encuentra vacio")
+            }
+
+            //excepcion si en el numero de telefono no ingreso numeros
+            catch (e:NumberFormatException){
+                mostrarMensajeDeError("en los campos de telefono y nit  solo se puede" +
+                        " ingresar numeros")
+            }
+        }
+
+        return view
+    }
+
+    //funcion para verificar si estan vacios los elementos
+    //la cadena incluye los elementos del campo
+    fun verificarSiEstaVacio(cadena:String,nombreDelCampo:String): String {
+
+        // comprobamos la cadena si esta vacia enviamos la excepción
+        if (cadena.equals("")){
+            var excepcion = ExcepcionCampoVacio()
+            excepcion.campo =nombreDelCampo //ingresamos el nombre del campo para la excepcion
+            throw  excepcion
+        }
+        return cadena //retornamos la cadena si no esta vacia
+    }
+
+    fun mostrarMensajeDeError(mensaje:String){
+        var mensajeDeAlerta  = AlertDialog.Builder(context).create()
+        mensajeDeAlerta.setTitle("error")
+        mensajeDeAlerta.setMessage(mensaje)
+        mensajeDeAlerta.setButton(AlertDialog.BUTTON_POSITIVE,"OK",{
+            dialogInterface, i ->  
+        })
     }
 
 }// Required empty public constructor

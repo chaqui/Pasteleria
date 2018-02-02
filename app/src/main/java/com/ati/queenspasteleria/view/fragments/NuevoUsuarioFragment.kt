@@ -12,6 +12,7 @@ import android.widget.Button
 import com.ati.queenspasteleria.ExcepcionCampoVacio
 
 import com.ati.queenspasteleria.R
+import com.ati.queenspasteleria.Settings.VerificarCampos
 import com.ati.queenspasteleria.modelo.Usuario
 import junit.framework.Assert
 
@@ -40,21 +41,22 @@ class NuevoUsuarioFragment : Fragment() {
         var btCrearUsuario = view.findViewById<Button>(R.id.btCrearUsuario)
 
         btCrearUsuario.setOnClickListener{
+            var verificar = VerificarCampos()
             try {
 
                 //onvertimos todos los campos a variables utilizables
                 //strings con verificacion si estan vacios los campos
-                var nombre =verificarSiEstaVacio( txINombre.text.toString(), "nombre")
-                var apellido =verificarSiEstaVacio(txIApellido.text.toString(), "apellido")
-                var direccion = verificarSiEstaVacio(txIDireccion.text.toString(),"direccion")
-                var nickName = verificarSiEstaVacio(txINickName.text.toString(),"nickname")
-                var contrasenia1 = verificarSiEstaVacio( txIContrasenia1.text.toString(),"contraseña")
-                var contrasenia2 =  verificarSiEstaVacio(txIContrasenia2.text.toString(),"contraseña repetida")
+                var nombre =verificar.verificarSiEstaVacio( txINombre.text.toString(), "nombre")
+                var apellido =verificar.verificarSiEstaVacio(txIApellido.text.toString(), "apellido")
+                var direccion = verificar.verificarSiEstaVacio(txIDireccion.text.toString(),"direccion")
+                var nickName = verificar.verificarSiEstaVacio(txINickName.text.toString(),"nickname")
+                var contrasenia1 = verificar.verificarSiEstaVacio( txIContrasenia1.text.toString(),"contraseña")
+                var contrasenia2 =  verificar.verificarSiEstaVacio(txIContrasenia2.text.toString(),"contraseña repetida")
                 var correoElectronico = txICorreoElectronico.text.toString()
 
 
                 //enteros con verificacion si ingreso el numero de telefono
-                var telefono =Integer.parseInt(verificarSiEstaVacio(txITelefono.text.toString(),
+                var telefono =Integer.parseInt(verificar.verificarSiEstaVacio(txITelefono.text.toString(),
                         "telefono"))
                 var nit =Integer.parseInt(
                         if(txINit.text.toString().equals("")) "0" else txINit.text.toString())
@@ -71,49 +73,29 @@ class NuevoUsuarioFragment : Fragment() {
                     throw Exception()
                 }
 
-
             }
+
+
             //excepcion si las contraseñas no son iguales
             catch (e:Exception){
-                mostrarMensajeDeError("disculpe las contraseñas que ha ingresado no " +
-                        "son iguales")
+                verificar.mostrarMensajeDeError("disculpe las contraseñas que ha ingresado no " +
+                        "son iguales",context)
 
             }
             //excepcion si los campos estan vacios
             catch (e:ExcepcionCampoVacio){
-                mostrarMensajeDeError("disculpe el campo "+e.campo+"se encuentra vacio")
+                verificar.mostrarMensajeDeError("disculpe el campo "+e.campo+"se encuentra vacio",context)
             }
 
             //excepcion si en el numero de telefono no ingreso numeros
             catch (e:NumberFormatException){
-                mostrarMensajeDeError("en los campos de telefono y nit  solo se puede" +
-                        " ingresar numeros")
+                verificar.mostrarMensajeDeError("en los campos de telefono y nit  solo se puede" +
+                        " ingresar numeros",context)
             }
         }
 
         return view
     }
 
-    //funcion para verificar si estan vacios los elementos
-    //la cadena incluye los elementos del campo
-    fun verificarSiEstaVacio(cadena:String,nombreDelCampo:String): String {
-
-        // comprobamos la cadena si esta vacia enviamos la excepción
-        if (cadena.equals("")){
-            var excepcion = ExcepcionCampoVacio()
-            excepcion.campo =nombreDelCampo //ingresamos el nombre del campo para la excepcion
-            throw  excepcion
-        }
-        return cadena //retornamos la cadena si no esta vacia
-    }
-
-    fun mostrarMensajeDeError(mensaje:String){
-        var mensajeDeAlerta  = AlertDialog.Builder(context).create()
-        mensajeDeAlerta.setTitle("error")
-        mensajeDeAlerta.setMessage(mensaje)
-        mensajeDeAlerta.setButton(AlertDialog.BUTTON_POSITIVE,"OK",{
-            dialogInterface, i ->  
-        })
-    }
 
 }// Required empty public constructor

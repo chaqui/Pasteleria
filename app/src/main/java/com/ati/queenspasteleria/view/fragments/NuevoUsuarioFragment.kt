@@ -78,18 +78,20 @@ class NuevoUsuarioFragment : Fragment() {
 
             //excepcion si las contraseñas no son iguales
             catch (e:Exception){
-                verificar.mostrarMensajeDeError("disculpe las contraseñas que ha ingresado no " +
-                        "son iguales",context)
+                verificar.mostrarMensajeDeError("disculpe las contraseñas que ha ingresado" +
+                        " no son iguales",context)
 
             }
             //excepcion si los campos estan vacios
             catch (e:ExcepcionCampoVacio){
-                verificar.mostrarMensajeDeError("disculpe el campo "+e.campo+"se encuentra vacio",context)
+                verificar.mostrarMensajeDeError("disculpe el campo "+e.campo+"se encuentra " +
+                        "vacio",context)
             }
 
             //excepcion si en el numero de telefono no ingreso numeros
             catch (e:NumberFormatException){
-                verificar.mostrarMensajeDeError("en los campos de telefono y nit  solo se puede" +
+                verificar.mostrarMensajeDeError("en los campos de telefono y nit  solo se " +
+                        "puede" +
                         " ingresar numeros",context)
             }
         }

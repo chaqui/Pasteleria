@@ -12,6 +12,7 @@ import com.ati.queenspasteleria.ExcepcionCampoVacio
 
 import com.ati.queenspasteleria.R
 import com.ati.queenspasteleria.Settings.VerificarCampos
+import com.ati.queenspasteleria.modelo.UsuarioLogin
 
 
 /**
@@ -35,10 +36,15 @@ class LoginFragment : Fragment() {
                             "usuario")
                     var contrasenia = verificar.verificarSiEstaVacio(contraseniaLogin.text.toString(),
                             "contraseña")
+
+                    var usuarioLogin = UsuarioLogin(usuario,contrasenia)
+                    usuarioLogin.loggear()
+
                 }
                 catch (e:ExcepcionCampoVacio){
                     verificar.mostrarMensajeDeError("disculpe el campo "+e.campo+"se encuentra vacio",context)
                 }
+
         }
         return view
     }

@@ -12,6 +12,7 @@ import android.widget.Button
 import com.ati.queenspasteleria.ExcepcionCampoVacio
 
 import com.ati.queenspasteleria.R
+import com.ati.queenspasteleria.Settings.ConfiguracionUsuario
 import com.ati.queenspasteleria.Settings.VerificarCampos
 import com.ati.queenspasteleria.modelo.Usuario
 import junit.framework.Assert
@@ -56,18 +57,21 @@ class NuevoUsuarioFragment : Fragment() {
 
 
                 //enteros con verificacion si ingreso el numero de telefono
-                var telefono =Integer.parseInt(verificar.verificarSiEstaVacio(txITelefono.text.toString(),
-                        "telefono"))
-                var nit =Integer.parseInt(
-                        if(txINit.text.toString().equals("")) "0" else txINit.text.toString())
+                var telefono =verificar.verificarSiEstaVacio(txITelefono.text.toString(),
+                        "telefono")
+                var nit =if(txINit.text.toString().equals("")) "0" else txINit.text.toString()
 
                 //verificamos si las contraseñas son correctas
                 if(contrasenia1.equals(contrasenia2)){
 
                     //creación del objeto de usuario
-                    var usuario = Usuario(nombre,apellido,direccion,telefono,0,nickName,
+                    var usuario = Usuario(0,nombre,apellido,direccion,telefono,nickName,
                             correoElectronico,contrasenia1,nit)
-                    usuario.crearUsuario() //enviar el objeto usuario para almacenar
+                    if(usuario.crearUsuario()) { //enviar el objeto usuario para almacenar
+                        var configuracionUsuario = ConfiguracionUsuario()
+                        configuracionUsuario.crearArchivoUsuario(usuario,context)
+
+                    }
                 }
                 else{
                     throw Exception()

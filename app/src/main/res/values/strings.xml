@@ -34,6 +34,29 @@
     <string name="correo_formulario">Correo:</string>
     <string name="telefono_formulario">Telefono:</string>
 
+    <!--Strings para pedido -->
+    <string name="rebanadas">dividir en Rebanadas</string>
+    <string name="cantidadDeRebanadas">Cantidad de Rebanadas</string>
+    <string name="fechaEntrega">fecha De Entrega</string>
+    <string name="fotografia">fotografia para Diseño</string>
+    <string name="detalles">Detalles Extras:</string>
+    <string name="agregarProductos">agregar \n Productos</string>
+    <string name="finalizarCompra">Finalizar \n Compra</string>
+
+    <!--Strings para pago-->
+    <string name="Pago">¿Como desea hacer su Pago?</string>
+    <string name="efectivo">en Efectivo</string>
+    <string name="Deposito">en Deposito</string>
+
+    <!--Strings para direccion-->
+    <string name="direccionP">¿A que dirección se los enviamos?</string>
+    <string name="delUsuario">del Usuario</string>
+    <string name="nuevaDireccion">nueva Dirección</string>
+    <string name="preguntaNuevaDireccion">nueva Dirección</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>

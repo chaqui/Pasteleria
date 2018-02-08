@@ -10,15 +10,15 @@ import java.net.URLEncoder
  * Created by josue on 18/12/17.
  */
  class Usuario (
-        var nombre: String,
-        var apellido: String,
-        var direccion:String,
-        var telefono:Int,
-        var id:Int,
-        var nickname: String,
-        var contrasenia: String,
-        var correoElectronico:String,
-        var nit:Int,
+        var idCliente: Int,
+        var nombre_cli: String,
+        var apellido_cli: String,
+        var direccion_cli:String,
+        var telefono_cli:String,
+        var nickname_cli: String,
+        var password_cli: String,
+        var correo_cli:String,
+        var nit_cli:String,
         val tipo:String = "usuario"
 
 
@@ -29,12 +29,13 @@ import java.net.URLEncoder
          urlUsuario = Settings.url+"/usuario"
     }
 
-    fun crearUsuario(){
+    fun crearUsuario():Boolean{
 
         //configurando el data
         var gson = Gson()
         var data = gson.toJson(this) as String
         Settings.enviarPorPost(data,urlUsuario)
+        return true
     }
     fun modificarUsuario(){
         

@@ -14,6 +14,6 @@
     <dimen name="height_CardView">100dp</dimen>
     <dimen name="padding_text">12dp</dimen>
     <dimen name="size_text">10dp</dimen>
-
+    <dimen name="size_pregunta">24sp</dimen>
 
 </resources>

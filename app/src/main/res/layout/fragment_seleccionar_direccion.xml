@@ -1,0 +1,67 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ati.queenspasteleria.view.fragments.SeleccionarDireccionFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/fab_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="2"></LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.7">
+
+            <TextView
+                android:id="@+id/txWDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/direccionP"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+                android:textSize="24sp" />
+            <Button
+                android:id="@+id/btUsuarioDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/RaiseButtonDark"
+                android:text="@string/delUsuario"
+                />
+            <Button
+                android:id="@+id/btNuevaDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/RaiseButtonDark"
+                android:text="@string/nuevaDireccion"
+                />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txINuevaDireccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/preguntaNuevaDireccion"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                    android:inputType="date" />
+
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</FrameLayout>

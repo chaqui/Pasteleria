@@ -20,7 +20,7 @@ class PictureAdapterCategorias( var categorias: ArrayList<Categoria>,
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         var categoria = categorias.get(position)
-        holder!!.txWTitulo.text = categoria.nombre
+        holder!!.txWTitulo.text = categoria.cat_nombre
 
     }
 

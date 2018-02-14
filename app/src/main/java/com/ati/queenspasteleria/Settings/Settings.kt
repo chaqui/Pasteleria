@@ -49,7 +49,7 @@ class Settings(){
 
             }
         }
-        fun recibirInfo(datosAEnviar:String, direccionUrl:String): String? {
+        fun recibirInfo( direccionUrl:String): String? {
             var result:String
             try {
                 var url = URL(direccionUrl)

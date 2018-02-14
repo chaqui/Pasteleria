@@ -43,7 +43,8 @@ class CategoriasFragment : Fragment() {
     }
     //aca hacemos la peticion y llenamos el cardVIew con la informacion Necesarioa
     fun buidCategorias ():ArrayList<Categoria>{
-       var categorias:ArrayList<Categoria> =ArrayList<Categoria>()
+        var categoria = Categoria()
+       var categorias:ArrayList<Categoria> = categoria.obtenerCategorias()!!
         return categorias
     }
 

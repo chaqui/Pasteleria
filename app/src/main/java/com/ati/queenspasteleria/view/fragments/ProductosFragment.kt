@@ -18,8 +18,8 @@ import kotlinx.android.synthetic.main.fragment_productos.*
 /**
  * A simple [Fragment] subclass.
  */
-class ProductosFragment : Fragment() {
-
+class ProductosFragment() : Fragment() {
+    private lateinit var idCategoria:String
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -43,7 +43,15 @@ class ProductosFragment : Fragment() {
     }
 
     fun buidProductos ():ArrayList<ProductoVenta> {
-        var productos: ArrayList<ProductoVenta> = ArrayList<ProductoVenta>()
+
+        //leer el id de la categoria enviada
+        val args = arguments
+        val id =args.getInt("id",0)
+
+        //objeto de producto venta
+        var productoVenta = ProductoVenta()
+        var productos: ArrayList<ProductoVenta> = productoVenta.obtenerProductos(Integer.toString(id))!!
         return productos
     }
+
 }// Required empty public constructor

@@ -2,6 +2,7 @@ package com.ati.queenspasteleria.modelo
 
 import com.ati.queenspasteleria.Settings.Settings
 import com.google.gson.Gson
+import com.google.gson.annotations.SerializedName
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
@@ -10,16 +11,16 @@ import java.net.URLEncoder
  * Created by josue on 18/12/17.
  */
  class Usuario (
-        var idCliente: Int,
-        var nombre_cli: String,
-        var apellido_cli: String,
-        var direccion_cli:String,
-        var telefono_cli:String,
-        var nickname_cli: String,
-        var password_cli: String,
-        var correo_cli:String,
-        var nit_cli:String,
-        val tipo:String = "usuario"
+        @SerializedName("idCLiente")  var idCliente: Int,
+        @SerializedName("nombre_cli") var nombre_cli: String,
+        @SerializedName("apellido_cli") var apellido_cli: String,
+        @SerializedName("direccion_cli") var direccion_cli:String,
+        @SerializedName("telefono_cli") var telefono_cli:String,
+        @SerializedName("nickname_cli") var nickname_cli: String,
+        @SerializedName("password_cli") var password_cli: String,
+        @SerializedName("correo_cli") var correo_cli:String,
+        @SerializedName("nit_cli") var nit_cli:String,
+        @SerializedName("tipo") val tipo:String = "usuario"
 
 
 ){

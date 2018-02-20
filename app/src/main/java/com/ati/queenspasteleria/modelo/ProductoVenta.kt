@@ -21,13 +21,17 @@ open class  ProductoVenta(
         @SerializedName("ocacion_id") var ocacion_id: Int
 )
 {
+    //constructor en blanco
     constructor():this(0.0f,"",0,"","",0,0,0)
-    //almacenaminto de url para obtener productos de categoria
+
+
+    // url para obtener productos de categoria
     lateinit var urlProductos:String
 
-    //almacenaminto de url para obtener detalles de producto
+    // url para obtener detalles de producto
     lateinit var urlProducto:String
 
+    //def
     init {
         urlProductos = Settings.url+"/categoria/proventas/"
         urlProducto = Settings.url+"/proventa/"
@@ -54,7 +58,7 @@ open class  ProductoVenta(
     fun obtenerProducto(idproducto:String):ProductoVenta{
 
         //obtener el producto en String
-        var result = Settings.recibirInfo(urlProductos+idproducto)
+        var result = Settings.recibirInfo(urlProducto+idproducto)
 
         //preparar la conversion a Json
         var gson = Gson()

@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.ati.queenspasteleria.R
+import com.ati.queenspasteleria.modelo.FotografiaPasteles
+import com.ati.queenspasteleria.modelo.Ocasion
 import com.ati.queenspasteleria.modelo.ProductoVenta
 
 /**
@@ -21,20 +23,21 @@ class ProductosAdapter(var productos:ArrayList<ProductoVenta>,
 ):RecyclerView.Adapter<ProductosAdapter.ViewHolder>(){
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
        var producto = productos.get(position)
-        holder!!.iVProducto = producto.fotografia.get(0) as ImageView
-        holder!!.txWNombre.text = producto.nombre
+
+        var fotografia = FotografiaPasteles()
+        holder!!.iVProducto = fotografia.obtenerFotografia(producto.idpro_venta.toString()) as ImageView
+        holder!!.txWNombre.text = producto.nombre_pro_venta
 
         //conctenando todas las ocasiones
-        var ocasiones: String =""
-        for(ocasion in producto.ocasiones)
-        {
-            ocasiones + ocasion.nombre+", "
-        }
-        ocasiones=  ocasiones.dropLast(2)
+
+        var ocasion = Ocasion()
+
+        var ocacion = ocasion.obtenerOcasion(producto.ocacion_id.toString())
 
 
-        holder!!.txWOcasion.text = ocasiones
-        holder!!.txWDescripcion.text = producto.descripcion
+
+        holder!!.txWOcasion.text = ocacion.toString()
+        holder!!.txWDescripcion.text = producto.descripcion_pro_venta
 
     }
 

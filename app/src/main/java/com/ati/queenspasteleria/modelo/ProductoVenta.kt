@@ -16,13 +16,12 @@ open class  ProductoVenta(
         @SerializedName("idpro_venta") var idpro_venta:Int,
         @SerializedName("descripcion_pro_venta") var descripcion_pro_venta: String,
         @SerializedName("decoracion_pastel") var decoracion_pastel:String,
-        @SerializedName("oferta_id") var oferta_id: Int,
         @SerializedName("categoria_id") var categoria_id: Int,
         @SerializedName("ocacion_id") var ocacion_id: Int
 )
 {
     //constructor en blanco
-    constructor():this(0.0f,"",0,"","",0,0,0)
+    constructor():this(0.0f,"",0,"","",0,0)
 
 
     // url para obtener productos de categoria

@@ -27,7 +27,7 @@ import java.net.URLEncoder
 
     lateinit var urlUsuario:String
     init {
-         urlUsuario = Settings.url+"/usuario"
+         urlUsuario = Settings.url+"/usuario/"
     }
 
     fun crearUsuario():Boolean{

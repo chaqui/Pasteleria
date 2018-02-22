@@ -24,7 +24,7 @@ import com.google.gson.reflect.TypeToken
         urlOcasion = Settings.url+"/ocacion/"
     }
 
-    fun obtenerProductos(idCategoria:String): ArrayList<Ocasion>? {
+    fun obtenerOcasiones(idCategoria:String): ArrayList<Ocasion>? {
 
 
         //obtener los productos en String
@@ -41,7 +41,7 @@ import com.google.gson.reflect.TypeToken
 
     }   
 
-    fun obtenerProducto(idproducto:String):Ocasion{
+    fun obtenerOcasion(idproducto:String):Ocasion{
 
         //obtener el producto en String
         var result = Settings.recibirInfo(urlOcasion+idproducto)

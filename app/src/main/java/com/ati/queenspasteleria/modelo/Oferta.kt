@@ -25,7 +25,7 @@ import java.util.*
     lateinit var urlOfertas:String
     init{
         urlOferta = Settings.url+"/oferta/"
-        urlOfertas = Settings.url+"proventa/ofertas/"
+        urlOfertas = Settings.url+"/proventa/ofertas/"
     }
 
     fun obtenerOfertas(idCategoria:String): ArrayList<Oferta>? {

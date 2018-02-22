@@ -15,12 +15,13 @@ class DetallesPedido(
         @SerializedName("detalles_prod_pedido") var detalles_prod_pedido:String,
         @SerializedName("foto_decoracion") var foto_decoracion: String,
         @SerializedName("descripcion_pastel") var descripcion_pastel: String,
-        @SerializedName("pasteles_venta_id") var pasteles_venta_id:Int
-
+        @SerializedName("pasteles_venta_id") var pasteles_venta_id:Int,
+        @SerializedName("oferta_idoferta") var oferta_idoferta:Int
 )
 {
     //constructor en blanco
-    constructor():this(0,0,0,"","","",0)
+    constructor():this(0,0,0,"",
+            "","",0,0)
     // url para  productos pedidos
     lateinit var urlDetallesPedido:String
 

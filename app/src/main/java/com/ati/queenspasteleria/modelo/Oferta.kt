@@ -25,25 +25,8 @@ import java.util.*
     lateinit var urlOfertas:String
     init{
         urlOferta = Settings.url+"/oferta/"
-        urlOfertas = Settings.url+"/proventa/ofertas/"
     }
 
-    fun obtenerOfertas(idCategoria:String): ArrayList<Oferta>? {
-
-
-        //obtener los productos en String
-        var result = Settings.recibirInfo(urlOfertas+idCategoria)
-
-        //preparar la conversion a Json
-        var gson = Gson()
-        val turnsType = object : TypeToken<ArrayList<Oferta>>(){}.type
-
-        //conversion de cadena a Json
-        val productosVenta =  gson.fromJson<ArrayList<Oferta>>(result,turnsType)
-
-        return productosVenta
-
-    }
 
     fun obtenerOferta(idproducto:String):Oferta{
 

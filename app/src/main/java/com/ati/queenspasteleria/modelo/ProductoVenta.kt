@@ -11,9 +11,9 @@ import com.google.gson.reflect.TypeToken
 open class  ProductoVenta(
 
         //Serializar Variables
-        @SerializedName("precio_pro_venta") var precio_pro_venta:Float,
-        @SerializedName("nombre_pro_venta") var nombre_pro_venta:String,
         @SerializedName("idpro_venta") var idpro_venta:Int,
+        @SerializedName("nombre_pro_venta") var nombre_pro_venta:String,
+        @SerializedName("precio_pro_venta") var precio_pro_venta:Float,
         @SerializedName("descripcion_pro_venta") var descripcion_pro_venta: String,
         @SerializedName("decoracion_pastel") var decoracion_pastel:String,
         @SerializedName("categoria_id") var categoria_id: Int,
@@ -21,7 +21,7 @@ open class  ProductoVenta(
 )
 {
     //constructor en blanco
-    constructor():this(0.0f,"",0,"","",0,0)
+    constructor():this(0,"",0f,"","",0,0)
 
 
     // url para obtener productos de categoria

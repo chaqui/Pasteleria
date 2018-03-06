@@ -57,13 +57,19 @@
                 android:text="@string/iniciar_sesion" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/txOlvidoContrasenia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/contrasena_olvidada_formulario"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Notification.Line2.Media" />
-
+            <TextView
+                android:id="@+id/txNuevoUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nuevo_usuario"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Notification.Line2.Media" />
 
         </LinearLayout>
 

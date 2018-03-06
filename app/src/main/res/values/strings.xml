@@ -26,6 +26,7 @@
     <string name="contrasenia_formulario"> Contraseña:</string>
     <string name="repita_contrasenia_formulario">Repita la  contraseña:</string>
     <string name="contrasena_olvidada_formulario">Se me olvido la contraseña</string>
+    <string name="nuevo_usuario">Soy nuevo usuario</string>
     <string name="iniciar_sesion">Iniciar Sesión</string>
     <string name="crear_usuario_formulario">Crear Usuario</string>
     <string name="usuario_formulario">Usuario:</string>

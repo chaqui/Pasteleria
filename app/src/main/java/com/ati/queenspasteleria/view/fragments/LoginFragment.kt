@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import com.ati.queenspasteleria.excepciones.ExcepcionCampoVacio
 
 import com.ati.queenspasteleria.R
@@ -28,6 +29,8 @@ class LoginFragment : Fragment() {
         var usuarioLogin = view.findViewById<TextInputEditText>(R.id.usuarioLogin)
         var contraseniaLogin = view.findViewById<TextInputEditText>(R.id.contraseniaLogin)
         var btLogin = view.findViewById<Button>(R.id.btLogin)
+        var txNuevoUsuario = view.findViewById<TextView>(R.id.txNuevoUsuario)
+        var txOlvidoContrasenia = view.findViewById<TextView>(R.id.txOlvidoContrasenia)
 
         btLogin.setOnClickListener{
             var verificar = VerificarCampos()
@@ -46,6 +49,13 @@ class LoginFragment : Fragment() {
                 }
 
         }
+        txNuevoUsuario.setOnClickListener{
+            var transaction = fragmentManager.beginTransaction()
+            transaction.replace(R.id.contenedor_principal,NuevoUsuarioFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
         return view
     }
 

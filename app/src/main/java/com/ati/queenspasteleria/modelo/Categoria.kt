@@ -9,7 +9,7 @@ import com.google.gson.reflect.TypeToken
  * Created by josue on 22/01/18.
  */
 class Categoria(
-        @SerializedName("id") var id: Int,
+        @SerializedName("idcategoria") var id: Int,
         @SerializedName("cat_nombre") var cat_nombre:String
 )
 {

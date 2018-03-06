@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import com.ati.queenspasteleria.ExcepcionCampoVacio
+import com.ati.queenspasteleria.excepciones.ExcepcionCampoVacio
 
 import com.ati.queenspasteleria.R
 import com.ati.queenspasteleria.Settings.VerificarCampos
@@ -41,7 +41,7 @@ class LoginFragment : Fragment() {
                     usuarioLogin.loggear()
 
                 }
-                catch (e:ExcepcionCampoVacio){
+                catch (e: ExcepcionCampoVacio){
                     verificar.mostrarMensajeDeError("disculpe el campo "+e.campo+"se encuentra vacio",context)
                 }
 

@@ -37,7 +37,17 @@ class CategoriasFragment : Fragment() {
                 R.layout.cardview_categoria,
                 activity
         )
+
+        pictureAdapterCategorias.setOnClickListener(object: View.OnClickListener{
+            override fun onClick(p0: View?) {
+
+                var idCategorias =pictureAdapterCategorias.categorias[listCategorias.getChildPosition(p0)].id
+            }
+
+        })
         listCategorias.adapter=pictureAdapterCategorias
+
+
         return view
 
     }
@@ -45,6 +55,7 @@ class CategoriasFragment : Fragment() {
     fun buidCategorias ():ArrayList<Categoria>{
         var categoria = Categoria()
        var categorias:ArrayList<Categoria> = categoria.obtenerCategorias()!!
+
         return categorias
     }
 

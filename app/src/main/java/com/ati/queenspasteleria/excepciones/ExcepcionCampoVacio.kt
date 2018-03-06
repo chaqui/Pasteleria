@@ -1,4 +1,4 @@
-package com.ati.queenspasteleria
+package com.ati.queenspasteleria.excepciones
 
 /**
  * Created by josue on 2/02/18.

@@ -14,6 +14,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.ati.queenspasteleria.R
 import com.ati.queenspasteleria.Settings.ConfiguracionUsuario
+import com.ati.queenspasteleria.view.fragments.CategoriasFragment
 import com.ati.queenspasteleria.view.fragments.LoginFragment
 import com.ati.queenspasteleria.view.fragments.ProductosFragment
 import com.ati.queenspasteleria.view.fragments.UsuarioFragment
@@ -31,7 +32,8 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
-
+        transaction.replace(R.id.contenedor_principal,CategoriasFragment())
+        transaction.commit()
         nav_view.setNavigationItemSelectedListener(this)
     }
 
@@ -66,18 +68,18 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         when (item.itemId) {
             R.id.Pasteles ->{
                 toolbar.title="Productos"
-                transaction.replace(R.id.fragmentPrincipal,ProductosFragment())
+                transaction.replace(R.id.contenedor_principal,CategoriasFragment())
                 transaction.commit()
                 return true}
             R.id.Pedidos -> {
                 toolbar.title="Pedidos"
-                transaction.replace(R.id.fragmentPrincipal,ProductosFragment())
+                transaction.replace(R.id.contenedor_principal,ProductosFragment())
                 transaction.commit()
                 return true
             }
             R.id.usuario ->{
                 toolbar.title="Usuario"
-                transaction.replace(R.id.fragmentPrincipal,UsuarioFragment())
+                transaction.replace(R.id.contenedor_principal,UsuarioFragment())
                 transaction.commit()
                 return true
             }
@@ -86,7 +88,7 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 if(!configuracionUsuario.verificarUsuarioInicioSesion()){
                     toolbar.title="Iniciar Sesion"
                     return true
-                    transaction.replace(R.id.fragmentPrincipal,LoginFragment())
+                    transaction.replace(R.id.contenedor_principal,LoginFragment())
                     transaction.commit()
                 }
                 else{
@@ -109,12 +111,12 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
             dialogInterface, i ->
             val configuracionDeUsuario = ConfiguracionUsuario()
             configuracionDeUsuario.eliminarRegistroUsuario(this)
-            transaction.replace(R.id.fragmentPrincipal,ProductosFragment()).commit()
+            transaction.replace(R.id.contenedor_principal,ProductosFragment()).commit()
             
         })
         mensajeDeAlerta.setButton(AlertDialog.BUTTON_NEGATIVE,"no",{
             dialogInterface, i ->
-            transaction.replace(R.id.fragmentPrincipal,ProductosFragment()).commit()
+            transaction.replace(R.id.contenedor_principal,ProductosFragment()).commit()
 
         })
         

@@ -1,7 +1,6 @@
 package com.ati.queenspasteleria.view.fragments
 
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.support.design.widget.TextInputEditText
 import android.support.v4.app.Fragment
@@ -9,13 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import com.ati.queenspasteleria.ExcepcionCampoVacio
+import com.ati.queenspasteleria.excepciones.ExcepcionCampoVacio
 
 import com.ati.queenspasteleria.R
 import com.ati.queenspasteleria.Settings.ConfiguracionUsuario
 import com.ati.queenspasteleria.Settings.VerificarCampos
+import com.ati.queenspasteleria.excepciones.ExcepcionTamanioCadena
 import com.ati.queenspasteleria.modelo.Usuario
-import junit.framework.Assert
 
 
 /**
@@ -59,6 +58,7 @@ class NuevoUsuarioFragment : Fragment() {
                 //enteros con verificacion si ingreso el numero de telefono
                 var telefono =verificar.verificarSiEstaVacio(txITelefono.text.toString(),
                         "telefono")
+                telefono = verificar.verificarTamanioCadena(telefono,"telefono",8)
                 var nit =if(txINit.text.toString().equals("")) "0" else txINit.text.toString()
 
                 //verificamos si las contraseñas son correctas
@@ -87,7 +87,7 @@ class NuevoUsuarioFragment : Fragment() {
 
             }
             //excepcion si los campos estan vacios
-            catch (e:ExcepcionCampoVacio){
+            catch (e: ExcepcionCampoVacio){
                 verificar.mostrarMensajeDeError("disculpe el campo "+e.campo+"se encuentra " +
                         "vacio",context)
             }
@@ -98,10 +98,12 @@ class NuevoUsuarioFragment : Fragment() {
                         "puede" +
                         " ingresar numeros",context)
             }
+            catch (e:ExcepcionTamanioCadena){
+                verificar.mostrarMensajeDeError("el numero de telefono es corto",context)
+            }
         }
 
         return view
     }
-
 
 }// Required empty public constructor

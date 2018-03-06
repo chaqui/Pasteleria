@@ -1,5 +1,7 @@
 package com.ati.queenspasteleria.Settings
 
+import android.os.StrictMode
+import android.util.Log
 import com.google.gson.Gson
 import java.io.BufferedOutputStream
 import java.io.BufferedReader
@@ -16,7 +18,7 @@ import java.net.URLEncoder
 //Clase para almacenar las configuraciones del sistema
 class Settings(){
     companion object {
-        val url =""
+        val url ="http://192.168.1.2:8080/api/index.php"
         var iniciadaSesion:Boolean = false
 
         fun enviarPorPost(datosAEnviar:String, direccionUrl:String ){
@@ -51,7 +53,10 @@ class Settings(){
         }
         fun recibirInfo( direccionUrl:String): String? {
             var result:String
+            var policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+            StrictMode.setThreadPolicy(policy)
             try {
+
                 var url = URL(direccionUrl)
                 var urlConnection = url.openConnection() as HttpURLConnection
                 urlConnection.requestMethod ="GET"

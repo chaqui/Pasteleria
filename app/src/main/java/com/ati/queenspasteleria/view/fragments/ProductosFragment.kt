@@ -28,7 +28,6 @@ class ProductosFragment() : Fragment() {
         // Inflate the layout for this fragment
         var view = inflater!!.inflate(R.layout.fragment_productos, container, false)
         var listProductos = view.findViewById<RecyclerView>(R.id.listProductos)
-        var toolbar = view.findViewById<Toolbar>(R.id.toolbar)
 
         var linearLayoutManager = LinearLayoutManager(context)
         //colocamos el recycler en forma Vertical

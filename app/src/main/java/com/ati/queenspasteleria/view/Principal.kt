@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import com.ati.queenspasteleria.R
 import com.ati.queenspasteleria.Settings.ConfiguracionUsuario
 import com.ati.queenspasteleria.view.fragments.CategoriasFragment
@@ -33,11 +34,43 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
+
+
+
+        //evento del textView de inciar Sesion
+        var navigationView = findViewById<NavigationView>(R.id.nav_view)
+        var headerView = navigationView.getHeaderView(0)
+        var txVInicieSesion = headerView.findViewById<TextView>(R.id.txVInicieSesion)
+
+        txVInicieSesion.setOnClickListener({
+            drawer_layout.closeDrawer(GravityCompat.START)
+            var configuracionUsuario = ConfiguracionUsuario()
+            //si no esta loggeado abrir fragment logib
+            if(!configuracionUsuario.verificarUsuarioInicioSesion()){
+                toolbar.title="Iniciar Sesion"
+                var transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.contenedor_principal,LoginFragment())
+                transaction.addToBackStack(null)
+                transaction.commit()
+            }
+            //si esta loggeado abrir el fragment de detalles de usuario
+            else
+            {
+                var transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.contenedor_principal,UsuarioFragment())
+                transaction.addToBackStack(null)
+                transaction.commit()
+            }
+        })
+
+
+
         var transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.contenedor_principal,CategoriasFragment())
         transaction.addToBackStack(null)
         transaction.commit()
         nav_view.setNavigationItemSelectedListener(this)
+
     }
 
     override fun onBackPressed() {
@@ -67,11 +100,10 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
-
+        drawer_layout.closeDrawer(GravityCompat.START)
         when (item.itemId) {
             R.id.Pasteles ->{
                 Log.i("when","Productos")
-                toolbar.title="Productos"
                 var transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.contenedor_principal,CategoriasFragment())
                 transaction.addToBackStack(null)
@@ -96,7 +128,6 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 return true
             }
             R.id.login->{
-                Log.i("when","login")
                 var configuracionUsuario = ConfiguracionUsuario()
                 if(!configuracionUsuario.verificarUsuarioInicioSesion()){
                     toolbar.title="Iniciar Sesion"

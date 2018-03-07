@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import com.ati.queenspasteleria.R
 import com.ati.queenspasteleria.modelo.Categoria
 import com.ati.queenspasteleria.view.adapter.PictureAdapterCategorias
+import kotlinx.android.synthetic.main.app_bar_principal.*
 
 
 /**
@@ -31,6 +32,7 @@ class CategoriasFragment : Fragment() {
         linearLayoutManager.orientation= LinearLayoutManager.VERTICAL
         //se lo implementamos al recycler
         listCategorias.layoutManager = linearLayoutManager
+        activity.title= "categorias"
 
         var pictureAdapterCategorias = PictureAdapterCategorias(
                 buidCategorias(),
@@ -41,9 +43,14 @@ class CategoriasFragment : Fragment() {
         pictureAdapterCategorias.setOnClickListener(object: View.OnClickListener{
             override fun onClick(p0: View?) {
 
-                var idCategoria =pictureAdapterCategorias.categorias[listCategorias.getChildPosition(p0)].id
+                var idCategoria =pictureAdapterCategorias.
+                        categorias[listCategorias.getChildPosition(p0)].id
+
+                var nombreCategoria =pictureAdapterCategorias.
+                        categorias[listCategorias.getChildPosition(p0)].cat_nombre
                 var args = Bundle()
                 args.putInt("id",idCategoria)
+                args.putString("categoria",nombreCategoria)
                 var productosFragment = ProductosFragment()
                 productosFragment.arguments =args
                 var transaction = fragmentManager.beginTransaction()

@@ -3,6 +3,7 @@ package com.ati.queenspasteleria.view.adapter
 import android.app.Activity
 import android.content.ClipData
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +26,7 @@ class ProductosAdapter(var productos:ArrayList<ProductoVenta>,
        var producto = productos.get(position)
 
         var fotografia = FotografiaPasteles()
-        holder!!.iVProducto = fotografia.obtenerFotografia(producto.idpro_venta.toString()) as ImageView
+//        holder!!.iVProducto = fotografia.obtenerFotografia(producto.idpro_venta.toString()) as ImageView
         holder!!.txWNombre.text = producto.nombre_pro_venta
 
         //conctenando todas las ocasiones
@@ -36,7 +37,7 @@ class ProductosAdapter(var productos:ArrayList<ProductoVenta>,
 
 
 
-        holder!!.txWOcasion.text = ocacion.toString()
+        holder!!.txWOcasion.text = ocacion.nombre_oc
         holder!!.txWDescripcion.text = producto.descripcion_pro_venta
 
     }
@@ -57,7 +58,7 @@ class ProductosAdapter(var productos:ArrayList<ProductoVenta>,
         var iVProducto    =  itemView.findViewById<ImageView>(R.id.iVProducto)
         var txWNombre    =  itemView.findViewById<TextView>(R.id.txWNombre)
         var txWOcasion    =  itemView.findViewById<TextView>(R.id.txWOcasion)
-        var txWDescripcion    =  itemView.findViewById<TextView>(R.id.txWNombre)
+        var txWDescripcion    =  itemView.findViewById<TextView>(R.id.txWDescripcion)
         fun bind(item: ClipData.Item, listener: (ClipData.Item) -> Unit) = with(itemView) {
 
 

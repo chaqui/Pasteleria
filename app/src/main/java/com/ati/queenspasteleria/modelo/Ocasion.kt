@@ -1,5 +1,6 @@
 package com.ati.queenspasteleria.modelo
 
+import android.util.Log
 import com.ati.queenspasteleria.Settings.Settings
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
@@ -24,11 +25,11 @@ import com.google.gson.reflect.TypeToken
         urlOcasion = Settings.url+"/ocacion/"
     }
 
-    fun obtenerOcasiones(idCategoria:String): ArrayList<Ocasion>? {
+    fun obtenerOcasiones(idProducto:String): ArrayList<Ocasion>? {
 
 
         //obtener los productos en String
-        var result = Settings.recibirInfo(urlOcasiones+idCategoria)
+        var result = Settings.recibirInfo(urlOcasiones+idProducto)
 
         //preparar la conversion a Json
         var gson = Gson()
@@ -45,11 +46,11 @@ import com.google.gson.reflect.TypeToken
 
         //obtener el producto en String
         var result = Settings.recibirInfo(urlOcasion+idproducto)
-
+        Log.i("json",result)
         //preparar la conversion a Json
         var gson = Gson()
-        val ocasion = gson.fromJson<Ocasion>(result,ProductoVenta::class.java)
-
+        var ocasion = gson.fromJson<Ocasion>(result,Ocasion::class.java)
+        Log.i("nombre ocasion",ocasion.nombre_oc)
         return ocasion
     }
 }

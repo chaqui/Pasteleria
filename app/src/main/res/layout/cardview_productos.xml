@@ -29,19 +29,20 @@
             android:paddingLeft="@dimen/padding_text">
 
             <TextView
+                android:id="@+id/txWNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <TextView
                 android:id="@+id/txWOcasion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="@android:color/white"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-            <TextView
-                android:id="@+id/txWNombre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:text="TextView"
                 android:textStyle="bold" />
 
             <TextView

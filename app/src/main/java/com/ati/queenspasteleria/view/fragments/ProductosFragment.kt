@@ -6,12 +6,15 @@ import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ati.queenspasteleria.R
 import com.ati.queenspasteleria.modelo.ProductoVenta
 import com.ati.queenspasteleria.view.adapter.ProductosAdapter
+import kotlinx.android.synthetic.main.app_bar_principal.*
 import kotlinx.android.synthetic.main.fragment_productos.*
 
 
@@ -25,11 +28,17 @@ class ProductosFragment() : Fragment() {
         // Inflate the layout for this fragment
         var view = inflater!!.inflate(R.layout.fragment_productos, container, false)
         var listProductos = view.findViewById<RecyclerView>(R.id.listProductos)
+        var toolbar = view.findViewById<Toolbar>(R.id.toolbar)
+
         var linearLayoutManager = LinearLayoutManager(context)
         //colocamos el recycler en forma Vertical
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
 
         listProductos.layoutManager = linearLayoutManager
+
+        val args = arguments
+        val nombre = args.getString("categoria")
+        activity.title= nombre
 
         var productosAdapter = ProductosAdapter(
                 buidProductos(),

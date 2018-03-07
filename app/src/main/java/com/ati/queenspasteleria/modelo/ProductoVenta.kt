@@ -42,7 +42,7 @@ open class  ProductoVenta(
 
 
         //obtener los productos en String
-        var result = Settings.recibirInfo(urlProductos+idCategoria)
+        var result = Settings.recibirInfo(urlProductos+idCategoria+"/0")
 
         //preparar la conversion a Json
         var gson = Gson()

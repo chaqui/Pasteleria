@@ -1,5 +1,6 @@
 package com.ati.queenspasteleria.modelo
 
+import android.util.Log
 import com.ati.queenspasteleria.Settings.Settings
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName

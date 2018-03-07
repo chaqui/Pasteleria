@@ -41,7 +41,16 @@ class CategoriasFragment : Fragment() {
         pictureAdapterCategorias.setOnClickListener(object: View.OnClickListener{
             override fun onClick(p0: View?) {
 
-                var idCategorias =pictureAdapterCategorias.categorias[listCategorias.getChildPosition(p0)].id
+                var idCategoria =pictureAdapterCategorias.categorias[listCategorias.getChildPosition(p0)].id
+                var args = Bundle()
+                args.putInt("id",idCategoria)
+                var productosFragment = ProductosFragment()
+                productosFragment.arguments =args
+                var transaction = fragmentManager.beginTransaction()
+                transaction.replace(R.id.contenedor_principal, productosFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
+
             }
 
         })

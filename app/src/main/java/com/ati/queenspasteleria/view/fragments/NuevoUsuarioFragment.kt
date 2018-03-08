@@ -15,6 +15,7 @@ import com.ati.queenspasteleria.Settings.ConfiguracionUsuario
 import com.ati.queenspasteleria.Settings.VerificarCampos
 import com.ati.queenspasteleria.excepciones.ExcepcionTamanioCadena
 import com.ati.queenspasteleria.modelo.Usuario
+import kotlinx.android.synthetic.main.app_bar_principal.*
 
 
 /**
@@ -27,7 +28,7 @@ class NuevoUsuarioFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
          var view=  inflater!!.inflate(R.layout.fragment_nuevo_usuario, container, false)
-
+            activity.toolbar.title="Nuevo Usuario"
         //obteniendo cada objeto de la vista
         var txINombre = view.findViewById<TextInputEditText>(R.id.txINombre)
         var txIApellido = view.findViewById<TextInputEditText>(R.id.txIApellido)
@@ -46,12 +47,18 @@ class NuevoUsuarioFragment : Fragment() {
 
                 //onvertimos todos los campos a variables utilizables
                 //strings con verificacion si estan vacios los campos
-                var nombre =verificar.verificarSiEstaVacio( txINombre.text.toString(), "nombre")
-                var apellido =verificar.verificarSiEstaVacio(txIApellido.text.toString(), "apellido")
-                var direccion = verificar.verificarSiEstaVacio(txIDireccion.text.toString(),"direccion")
-                var nickName = verificar.verificarSiEstaVacio(txINickName.text.toString(),"nickname")
-                var contrasenia1 = verificar.verificarSiEstaVacio( txIContrasenia1.text.toString(),"contraseña")
-                var contrasenia2 =  verificar.verificarSiEstaVacio(txIContrasenia2.text.toString(),"contraseña repetida")
+                var nombre =verificar.verificarSiEstaVacio( txINombre.text.toString(),
+                        "nombre")
+                var apellido =verificar.verificarSiEstaVacio(txIApellido.text.toString(),
+                        "apellido")
+                var direccion = verificar.verificarSiEstaVacio(txIDireccion.text.toString(),
+                        "direccion")
+                var nickName = verificar.verificarSiEstaVacio(txINickName.text.toString(),
+                        "nickname")
+                var contrasenia1 = verificar.verificarSiEstaVacio( txIContrasenia1.text.toString(),
+                        "contraseña")
+                var contrasenia2 =  verificar.verificarSiEstaVacio(txIContrasenia2.text.toString(),
+                        "contraseña repetida")
                 var correoElectronico = txICorreoElectronico.text.toString()
 
 

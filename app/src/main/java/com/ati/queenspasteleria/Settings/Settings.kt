@@ -3,13 +3,12 @@ package com.ati.queenspasteleria.Settings
 import android.os.StrictMode
 import android.util.Log
 import com.google.gson.Gson
-import java.io.BufferedOutputStream
-import java.io.BufferedReader
-import java.io.IOException
-import java.io.InputStreamReader
+import java.io.*
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
+
+
 
 /**
  * Created by josue on 24/01/18.
@@ -21,35 +20,42 @@ class Settings(){
         val url ="http://192.168.1.2:8080/api/index.php"
         var iniciadaSesion:Boolean = false
 
-        fun enviarPorPost(datosAEnviar:String, direccionUrl:String ){
-            var url = URL(direccionUrl)
-            var con: HttpURLConnection
+        fun enviarPorPost(datosAEnviar:String, direccionUrl:String ):Boolean{
 
+            Log.i("datos a enviar",datosAEnviar)
             //capturador de excepciones
             try{
+                var url = URL(direccionUrl)
+                var urlConnection = url.openConnection() as HttpURLConnection
+                urlConnection.doOutput= true
+                urlConnection.doInput = true
+                urlConnection.setRequestProperty("Content-Type", "application/json;  charset=UTF-8")
+                urlConnection.setRequestProperty("Accept", "application/json")
+                urlConnection.requestMethod ="POST"
 
-                //prepaamos el data para el usuario
+                var wr = DataOutputStream(urlConnection.outputStream)
 
-                var data = "body=" + URLEncoder.encode(datosAEnviar, "UTF-8")
-                //Realizar la conexion
-                con = url.openConnection() as HttpURLConnection
+                wr.writeBytes(datosAEnviar)
+                wr.flush()
 
-                //Activar metodo Post
-                con.doOutput = true
+                var reader = BufferedReader(InputStreamReader(urlConnection.inputStream))
+                var buffer = StringBuffer()
+                var linea:String? = null
 
-                //tamaño previamente conocido
-                con.setFixedLengthStreamingMode(data.length)
+                while ({linea = reader.readLine(); linea}() != null){
+                    buffer.append(linea+"\n")
+                }
+                Log.i("Buffer",buffer.toString())
 
-                con.setRequestProperty("Content-Type","application/x-www-form-urlencoded")
-
-                var out =  BufferedOutputStream(con.getOutputStream())
-
-
-
+                wr.close()
+                reader.close()
+                return true
             }
             catch(e:Exception){
-
+                Log.e("excepcion",e.toString())
+                return  false
             }
+
         }
         fun recibirInfo( direccionUrl:String): String? {
             var result:String

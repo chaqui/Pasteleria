@@ -3,6 +3,7 @@ package com.ati.queenspasteleria.modelo
 import com.ati.queenspasteleria.Settings.Settings
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
+import org.json.JSONException
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
@@ -27,16 +28,22 @@ import java.net.URLEncoder
 
     lateinit var urlUsuario:String
     init {
-         urlUsuario = Settings.url+"/usuario/"
+         urlUsuario = Settings.url+"/cliente"
     }
 
     fun crearUsuario():Boolean{
+        try{
+
 
         //configurando el data
         var gson = Gson()
         var data = gson.toJson(this) as String
-        Settings.enviarPorPost(data,urlUsuario)
-        return true
+         return Settings.enviarPorPost(data,urlUsuario)
+
+        }
+        catch (e: JSONException){
+            return false
+        }
     }
     fun modificarUsuario(){
         

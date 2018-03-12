@@ -4,6 +4,7 @@ package com.ati.queenspasteleria.view.fragments
 import android.os.Bundle
 import android.support.design.widget.TextInputEditText
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,7 +62,7 @@ class NuevoUsuarioFragment : Fragment() {
                         "contraseña repetida")
                 var correoElectronico = txICorreoElectronico.text.toString()
 
-
+                Log.i("sdasdas","sdasdas")
                 //enteros con verificacion si ingreso el numero de telefono
                 var telefono =verificar.verificarSiEstaVacio(txITelefono.text.toString(),
                         "telefono")

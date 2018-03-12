@@ -3,14 +3,12 @@ package com.ati.queenspasteleria.view.adapter
 import android.app.Activity
 import android.content.ClipData
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.ati.queenspasteleria.R
-import com.ati.queenspasteleria.modelo.FotografiaPasteles
 import com.ati.queenspasteleria.modelo.Ocasion
 import com.ati.queenspasteleria.modelo.ProductoVenta
 
@@ -25,8 +23,9 @@ class ProductosAdapter(var productos:ArrayList<ProductoVenta>,
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
        var producto = productos.get(position)
 
-        var fotografia = FotografiaPasteles()
-//        holder!!.iVProducto = fotografia.obtenerFotografia(producto.idpro_venta.toString()) as ImageView
+        //obtener imageness
+        holder!!.iVProducto.setImageBitmap(producto.obtenerImagen(""))
+
         holder!!.txWNombre.text = producto.nombre_pro_venta
 
         //conctenando todas las ocasiones
@@ -37,7 +36,7 @@ class ProductosAdapter(var productos:ArrayList<ProductoVenta>,
 
 
 
-        holder!!.txWOcasion.text = ocacion.nombre_oc
+        holder!!.txWOcasion.text ="Para: "+ ocacion.nombre_oc
         holder!!.txWDescripcion.text = producto.descripcion_pro_venta
 
     }

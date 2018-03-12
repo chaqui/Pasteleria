@@ -1,6 +1,9 @@
 package com.ati.queenspasteleria.modelo
 
+import android.graphics.Bitmap
+import android.graphics.Matrix
 import android.util.Log
+import android.widget.ImageView
 import com.ati.queenspasteleria.Settings.Settings
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
@@ -66,5 +69,15 @@ open class  ProductoVenta(
 
         return productoVenta
     }
+
+    fun obtenerImagen(nombreImagen: String): Bitmap? {
+        var bitmap = Settings.recibirImagen("")
+
+
+
+
+        return bitmap
+    }
+
 
 }

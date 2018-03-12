@@ -1,5 +1,7 @@
 package com.ati.queenspasteleria.Settings
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.StrictMode
 import android.util.Log
 import com.google.gson.Gson
@@ -18,6 +20,7 @@ import java.net.URLEncoder
 class Settings(){
     companion object {
         val url ="http://192.168.1.2:8080/api/index.php"
+        val urlImagen ="http://www.hdfondos.org/file/28225/728x410/16:9/rosquillas-pasteles_1292467610.jpg"
         var iniciadaSesion:Boolean = false
 
         fun enviarPorPost(datosAEnviar:String, direccionUrl:String ):Boolean{
@@ -58,6 +61,7 @@ class Settings(){
 
         }
         fun recibirInfo( direccionUrl:String): String? {
+            Log.i("url",direccionUrl)
             var result:String
             var policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
             StrictMode.setThreadPolicy(policy)
@@ -94,6 +98,14 @@ class Settings(){
             }
 
 
+
+        }
+        fun recibirImagen(url:String): Bitmap? {
+            val urlImagen = URL(urlImagen+url)
+            var conImagen = urlImagen.openConnection() as HttpURLConnection
+            conImagen.connect()
+            var bitmap = BitmapFactory.decodeStream(conImagen.inputStream)
+            return bitmap
 
         }
     }

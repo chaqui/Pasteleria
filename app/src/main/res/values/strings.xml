@@ -59,5 +59,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- Strings Oferta -->
+    <string name="fechaInicio">Fecha de Inicio:</string>
+    <string name="fechaFinalizacio">Fecha de Finalización:</string>
+    <string name="cantidaCompra">Cantidad de Compra:</string>
+
 
 </resources>

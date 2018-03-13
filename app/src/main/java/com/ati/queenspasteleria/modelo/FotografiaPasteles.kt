@@ -30,11 +30,11 @@ class FotografiaPasteles(
         urlFotografias = Settings.url + "/proventa/fotografias/"
     }
 
-    fun obtenerFotografias(idCategoria:String): ArrayList<FotografiaPasteles>? {
+    fun obtenerFotografias(idproducto: String): ArrayList<FotografiaPasteles>? {
 
 
         //obtener los productos en String
-        var result = Settings.recibirInfo(urlFotografias+idCategoria)
+        var result = Settings.recibirInfo(urlFotografias+idproducto)
 
         //preparar la conversion a Json
         var gson = Gson()
@@ -57,10 +57,6 @@ class FotografiaPasteles(
         val fotografia = gson.fromJson<FotografiaPasteles>(result,FotografiaPasteles::class.java)
 
         return fotografia
-    }
-
-    fun descargarFOtografia(){
-
     }
 
 }

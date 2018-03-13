@@ -1,13 +1,24 @@
 package com.ati.queenspasteleria.view.fragments
 
-import android.content.Context
-import android.net.Uri
+
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import com.ati.queenspasteleria.R
+import com.ati.queenspasteleria.Settings.Settings
+import com.ati.queenspasteleria.modelo.FotografiaPasteles
+import com.ati.queenspasteleria.modelo.Ocasion
+import com.ati.queenspasteleria.modelo.Oferta
+import com.ati.queenspasteleria.modelo.ProductoVenta
+import com.ati.queenspasteleria.view.adapter.FotografiasAdapter
+import com.ati.queenspasteleria.view.adapter.OfertasAdapter
+import kotlinx.android.synthetic.main.fragment_productos.*
 
 
 /**
@@ -20,87 +31,101 @@ import com.ati.queenspasteleria.R
  */
 class ProductoFragment : Fragment() {
 
-    // TODO: Rename and change types of parameters
-    private var mParam1: String? = null
-    private var mParam2: String? = null
 
-    private var mListener: OnFragmentInteractionListener? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        if (arguments != null) {
-            mParam1 = arguments.getString(ARG_PARAM1)
-            mParam2 = arguments.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         var view =  inflater!!.inflate(R.layout.fragment_producto, container, false)
 
-        
+        //obteniendo el id del Producto
+        val args = arguments
+        val id =args.getInt("id",0)
+
+        //obtener datos del producto
+        var productoVenta = ProductoVenta().obtenerProducto(id.toString())
+
+
+        //conectar a objetos del Fragment
+        var imageView2 = view.findViewById<ImageView>(R.id.imageView2)
+        var txNombreProducto = view.findViewById<TextView>(R.id.txNombreProducto)
+        var txVOcaciones = view.findViewById<TextView>(R.id.txVOcaciones)
+        var txVDescripcion = view.findViewById<TextView>(R.id.txVDescripcion)
+        var txVPrecio = view.findViewById<TextView>(R.id.txVPrecio)
+        var listOfertas = view.findViewById<RecyclerView>(R.id.listOfertas)
+        var listFotografias = view.findViewById<RecyclerView>(R.id.listFotografias)
+
+
+        //                   mostrar informacion  del producto
+        //obtener Fotografia
+        var fotografiaPasteles = buidFotografias(productoVenta.idpro_venta)
+
+        //mostrar imagen de cabecera
+        imageView2.setImageBitmap(Settings.recibirImagen(fotografiaPasteles[0].urlFotografia))
+
+       //nombre del producto
+        txNombreProducto.text = productoVenta.nombre_pro_venta
+        //ocasion
+        txVOcaciones.text =  Ocasion().obtenerOcasion(productoVenta.ocacion_id.toString()).nombre_oc
+        //descripcion
+        txVDescripcion.text = productoVenta.descripcion_pro_venta
+        //Precio
+        txVPrecio.text = "Q. "+productoVenta.precio_pro_venta
+
+        activity.title = productoVenta.nombre_pro_venta
+
+
+
+        //                              Recycler Views
+
+
+        //Recycler View de Ofertas
+
+        var linearLayoutManager = LinearLayoutManager(context)
+
+        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+
+        var ofertasAdapter = OfertasAdapter(buidOfertas(
+                productoVenta.idpro_venta),
+                R.layout.cardview_ofertas,
+                activity)
+
+        listOfertas.layoutManager = linearLayoutManager
+        listOfertas.adapter = ofertasAdapter
+
+
+        //Recycler View de Fotografias
+
+        var linearLayoutManagerh = LinearLayoutManager(context)
+
+        linearLayoutManagerh.orientation = LinearLayoutManager.HORIZONTAL
+
+        var fotografiasAdapter = FotografiasAdapter(fotografiaPasteles,
+                R.layout.cardview_ofertas,
+                activity)
+
+        listFotografias.layoutManager = linearLayoutManagerh
+        listFotografias.adapter = fotografiasAdapter
+
+
+
+
 
         return view
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    fun onButtonPressed(uri: Uri) {
-        if (mListener != null) {
-            mListener!!.onFragmentInteraction(uri)
-        }
+    fun buidOfertas(id:Int):ArrayList<Oferta>{
+        var oferta = Oferta()
+        var ofertas:ArrayList<Oferta> = oferta.obtenerOfertas(id)!!
+        return ofertas
     }
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        if (context is OnFragmentInteractionListener) {
-            mListener = context
-        } else {
-            throw RuntimeException(context!!.toString() + " must implement OnFragmentInteractionListener")
-        }
+    fun buidFotografias(id:Int):ArrayList<FotografiaPasteles>{
+        var fotografiaPasteles = FotografiaPasteles()
+        var fotografiasPasteles:ArrayList<FotografiaPasteles> = fotografiaPasteles.obtenerFotografias(id.toString())!!
+        return fotografiasPasteles
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        mListener = null
-    }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html) for more information.
-     */
-    interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
-    }
-
-    companion object {
-        // TODO: Rename parameter arguments, choose names that match
-        // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-        private val ARG_PARAM1 = "param1"
-        private val ARG_PARAM2 = "param2"
-
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProductoFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        fun newInstance(param1: String, param2: String): ProductoFragment {
-            val fragment = ProductoFragment()
-            val args = Bundle()
-            args.putString(ARG_PARAM1, param1)
-            args.putString(ARG_PARAM2, param2)
-            fragment.arguments = args
-            return fragment
-        }
-    }
 }// Required empty public constructor

@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import com.google.gson.reflect.TypeToken
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * Created by josue on 18/12/17.
@@ -38,5 +39,21 @@ import java.util.*
         val oferta = gson.fromJson<Oferta>(result,Oferta::class.java)
 
         return oferta
+    }
+
+    fun obtenerOfertas(id: Int): ArrayList<Oferta>? {
+        var ofertas = ArrayList<Oferta>()
+        var proVentaAProOferta = ProVentaAProOferta()
+        var proVentaAProOfertas: ArrayList<ProVentaAProOferta> = proVentaAProOferta.obtenerOfertas(id.toString())!!
+
+        if(proVentaAProOfertas == null){
+            return  null
+        }
+        for (i in proVentaAProOfertas.indices){
+            ofertas.add(this.obtenerOferta(proVentaAProOfertas[i].oferta_idoferta.toString()))
+        }
+
+
+        return ofertas
     }
 }

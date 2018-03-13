@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.ati.queenspasteleria.R
+import com.ati.queenspasteleria.Settings.Settings
 import com.ati.queenspasteleria.modelo.FotografiaPasteles
 
 /**
@@ -33,7 +34,10 @@ class FotografiasAdapter(var fotografiaPasteles: ArrayList<FotografiaPasteles>,
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-       var fotografiaProduto = fotografiaPasteles.get(position)
+       var fotografiaProducto = fotografiaPasteles.get(position)
+        holder!!.iVProducto.setImageBitmap(Settings.recibirImagen(fotografiaProducto.urlFotografia))
+
+
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

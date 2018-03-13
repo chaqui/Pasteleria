@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_productos.*
  * A simple [Fragment] subclass.
  */
 class ProductosFragment() : Fragment() {
-    private lateinit var idCategoria:String
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment

@@ -16,7 +16,8 @@ import com.ati.queenspasteleria.modelo.Categoria
  */
 class PictureAdapterCategorias( var categorias: ArrayList<Categoria>,
                                 var resource:Int,
-                                var activity: Activity) :RecyclerView.Adapter<PictureAdapterCategorias.ViewHolder>(),View.OnClickListener {
+                                var activity: Activity)
+    :RecyclerView.Adapter<PictureAdapterCategorias.ViewHolder>(),View.OnClickListener {
 
     private lateinit var listener:View.OnClickListener
 

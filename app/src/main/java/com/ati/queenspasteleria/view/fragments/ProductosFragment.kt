@@ -45,6 +45,25 @@ class ProductosFragment() : Fragment() {
                 activity
         )
 
+        productosAdapter.setOnClickListener(object: View.OnClickListener{
+            override fun onClick(p0: View?) {
+                Log.i("click","vamos")
+                var idProducto = productosAdapter.productos[listProductos.getChildPosition(p0)]
+                        .idpro_venta
+
+                var args = Bundle()
+                args.putInt("id",idProducto)
+                var productoFragment = ProductoFragment()
+                productoFragment.arguments = args
+                var transiction  = fragmentManager.beginTransaction()
+                transiction.replace(R.id.contenedor_principal,productoFragment)
+                transiction.addToBackStack(null)
+                transiction.commit()
+
+            }
+
+        })
+
 
         listProductos.adapter = productosAdapter
         return view

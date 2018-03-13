@@ -3,6 +3,7 @@ package com.ati.queenspasteleria.view.adapter
 import android.app.Activity
 import android.content.ClipData
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,9 +18,20 @@ import com.ati.queenspasteleria.modelo.ProductoVenta
  */
 class ProductosAdapter(var productos:ArrayList<ProductoVenta>,
                        var resource:Int,
-                       var activity:Activity
+                       var activity:Activity)
+    :RecyclerView.Adapter<ProductosAdapter.ViewHolder>(),View.OnClickListener {
+    private lateinit var listener:View.OnClickListener
+    override fun onClick(p0: View?) {
+        Log.i("click","onclick")
+        if(listener != null)
+            listener.onClick(p0)
+            }
 
-):RecyclerView.Adapter<ProductosAdapter.ViewHolder>(){
+    fun setOnClickListener(listener: View.OnClickListener) {
+        this.listener = listener
+    }
+
+
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
        var producto = productos.get(position)
 
@@ -47,6 +59,7 @@ class ProductosAdapter(var productos:ArrayList<ProductoVenta>,
                 parent,
                 false
         )
+        view.setOnClickListener(this)
         return ProductosAdapter.ViewHolder(view)
     }
 

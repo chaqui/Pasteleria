@@ -39,7 +39,6 @@ import java.net.URLEncoder
         //configurando el data
         var gson = Gson()
         var data = gson.toJson(this) as String
-            Log.i("data",data)
          return Settings.enviarPorPost(data,urlUsuario)
 
         }

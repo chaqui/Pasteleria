@@ -10,6 +10,8 @@ import android.view.Gravity
 import android.widget.Toast
 import android.content.Intent
 import com.ati.queenspasteleria.R
+import com.ati.queenspasteleria.Settings.Settings
+import java.net.InetAddress
 
 
 class Inicio : AppCompatActivity() {
@@ -28,12 +30,21 @@ class Inicio : AppCompatActivity() {
 
                 //Si hay inicia el activity principal
                 if(verificarConexionAInternet(this)){
-                    iniciarActivity()
+                    if (verificarConexionAServidor())
+                    {
+                        iniciarActivity()
+                    }
+                    else
+                    {
+                        enviarMensajeSinConexion(this,"no hay conexion con el servidor")
+                        finish()
+                    }
+
                 }
 
                 // si no hay conexion envia un mensaje y sale de la conexion
                 else{
-                    enviarMensajeSinConexion(this)
+                    enviarMensajeSinConexion(this,"no hay conexion a Internet")
                     finish()
 
                 }
@@ -47,8 +58,8 @@ class Inicio : AppCompatActivity() {
 
 
     //imprimir mensaje cuando no hay conexión
-    private fun enviarMensajeSinConexion(context: Context){
-        var toast:Toast = Toast.makeText(context,"no hay conexion a Internet",Toast.LENGTH_SHORT)
+    private fun enviarMensajeSinConexion(context: Context, mensaje:String){
+        var toast:Toast = Toast.makeText(context,mensaje,Toast.LENGTH_SHORT)
         toast.setGravity(Gravity.CENTER,0,0)
         toast.show()
 
@@ -70,5 +81,22 @@ class Inicio : AppCompatActivity() {
         // si hay conexion retorna TRUE si no retorna FALSE
         if(infoWifi.isConnected || infoDatos.isConnected ) return true
         return false
+    }
+
+    private fun verificarConexionAServidor():Boolean{
+        val timeOut = 5000
+        var connect:Boolean = true
+        try{
+            var innet = InetAddress.getByName(Settings.url)
+            connect = innet.isReachable(timeOut)
+
+        }
+        catch(e:Exception){
+            connect=false
+        }
+        finally {
+            return connect
+        }
+
     }
 }

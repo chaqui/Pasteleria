@@ -2,6 +2,8 @@ package com.ati.queenspasteleria.Settings
 
 import android.app.AlertDialog
 import android.content.Context
+import android.util.Log
+import android.widget.Toast
 import com.ati.queenspasteleria.excepciones.ExcepcionCampoVacio
 import com.ati.queenspasteleria.excepciones.ExcepcionTamanioCadena
 
@@ -11,6 +13,7 @@ import com.ati.queenspasteleria.excepciones.ExcepcionTamanioCadena
 class VerificarCampos(){
     //funcion para verificar si estan vacios los elementos
     //la cadena incluye los elementos del campo
+    @Throws(ExcepcionCampoVacio::class)
     fun verificarSiEstaVacio(cadena:String, nombreDelCampo:String): String {
         // comprobamos la cadena si esta vacia enviamos la excepción
         if (cadena.equals("")){
@@ -20,7 +23,7 @@ class VerificarCampos(){
         }
         return cadena //retornamos la cadena si no esta vacia
     }
-
+    @Throws(ExcepcionTamanioCadena::class)
     fun verificarTamanioCadena(cadena:String, campo:String, tamanio:Int):String{
         if(cadena.length != tamanio){
             var excepcion = ExcepcionTamanioCadena()
@@ -29,6 +32,7 @@ class VerificarCampos(){
         }
         return cadena
     }
+
     fun mostrarMensajeDeError(mensaje:String,context: Context){
         var mensajeDeAlerta  = AlertDialog.Builder(context).create()
         mensajeDeAlerta.setTitle("error")
@@ -36,5 +40,6 @@ class VerificarCampos(){
         mensajeDeAlerta.setButton(AlertDialog.BUTTON_POSITIVE,"OK",{
             dialogInterface, i ->
         })
+        mensajeDeAlerta.show()
     }
 }

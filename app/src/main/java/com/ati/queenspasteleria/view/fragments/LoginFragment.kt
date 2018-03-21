@@ -45,7 +45,7 @@ class LoginFragment : Fragment() {
 
                 }
                 catch (e: ExcepcionCampoVacio){
-                    verificar.mostrarMensajeDeError("disculpe el campo "+e.campo+"se encuentra vacio",context)
+                    verificar.mostrarMensajeDeError("disculpe el campo "+e.campo+" se encuentra vacio",context)
                 }
 
         }

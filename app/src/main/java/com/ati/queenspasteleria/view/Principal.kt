@@ -37,6 +37,8 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
 
 
+
+
         //evento del textView de inciar Sesion
         var navigationView = findViewById<NavigationView>(R.id.nav_view)
         var headerView = navigationView.getHeaderView(0)

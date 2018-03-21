@@ -9,9 +9,10 @@ import android.os.Handler
 import android.view.Gravity
 import android.widget.Toast
 import android.content.Intent
+import android.util.Log
 import com.ati.queenspasteleria.R
 import com.ati.queenspasteleria.Settings.Settings
-import java.net.InetAddress
+import java.io.IOException
 
 
 class Inicio : AppCompatActivity() {
@@ -84,18 +85,13 @@ class Inicio : AppCompatActivity() {
     }
 
     private fun verificarConexionAServidor():Boolean{
-        val timeOut = 5000
-        var connect:Boolean = true
-        try{
-            var innet = InetAddress.getByName(Settings.url)
-            connect = innet.isReachable(timeOut)
-
+        try {
+            var comando = "ping -c 1 "+Settings.host
+            return (Runtime.getRuntime().exec(comando).waitFor() ==0)
         }
-        catch(e:Exception){
-            connect=false
-        }
-        finally {
-            return connect
+        catch (e: Exception){
+            Log.e("excepcion",e.toString())
+            return false
         }
 
     }

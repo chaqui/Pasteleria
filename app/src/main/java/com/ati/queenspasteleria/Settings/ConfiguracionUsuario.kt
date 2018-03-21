@@ -1,6 +1,7 @@
 package com.ati.queenspasteleria.Settings
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import com.ati.queenspasteleria.modelo.Usuario
 import com.thoughtworks.xstream.XStream
@@ -32,27 +33,16 @@ class ConfiguracionUsuario(){
     fun crearArchivoUsuario(usuario:Usuario, context: Context){
         //configuracion del convertidor de XML
         xStream.alias("usuario",Usuario::class.java)
-        //iniciamos el manejo de excepciones
+        //iniciamos el mwanejo de excepciones
         try{
 
-            //variables para administrar los archivos
-            var archivo = File(nombreArchivo)
-            var bw: BufferedWriter
             //configuramos el conversor de Xml
-
             var stringXml = xStream.toXML(usuario)
-
-            //verificamos si existe el archivo
-            if (archivo.exists()){
-                throw Exception("el archivo existe")  //si existe lo enviamos a excepcion
-            }
-
-            else{
-
-                //si no existe creamos el archivo
-                bw = BufferedWriter(FileWriter(archivo)) //preparar el buffer
-                bw.write(stringXml) //escribir el archivo
-                bw.close()          //cerramos el archivo
+            if(leerArhivoUsuario(context) == null){
+                var fout = OutputStreamWriter( context.openFileOutput("usuario.xml", Context.MODE_PRIVATE))
+                fout.write(stringXml)
+                fout.close()
+                Log.i("Ficheros","fichero Creado")
             }
 
 
@@ -60,6 +50,7 @@ class ConfiguracionUsuario(){
 
         catch (e:Exception){
             //enviar un mensaje de error de que no se pudo escribir el archivo
+            Log.i("Ficheros","fichero no Creado")
            var toast = Toast.makeText(context,"Error en crear usuario",Toast.LENGTH_SHORT)
             toast.show()
         }
@@ -68,31 +59,26 @@ class ConfiguracionUsuario(){
 
     fun leerArhivoUsuario(context:Context): Usuario? {
         //configuracion del convertidor de XML
-        xStream.processAnnotations(Usuario::class.java)
-        //iniciamos el manejo de excepciones
-        try {
-            //variable de la cadena que tieen el archivo
-            var cadenaRecibida: String =""
-            //variables para administrar los archivos
-            var archivo = FileReader(nombreArchivo)
-            var br = BufferedReader(archivo)
+        xStream.alias("usuario",Usuario::class.java)
 
-            //leemos el contenido del archivo
-            var linea:String
-            while((  br.readLine())!=null) {
-                    linea = br.readLine()
-                    cadenaRecibida  =cadenaRecibida + linea //concatenamos cada linea
+        try{
+            var fin = BufferedReader(InputStreamReader(context.openFileInput("usuario.xml")))
+            var texto =""
+            var linea:String? = null
+
+            while ({linea = fin.readLine(); linea}() != null){
+                texto = linea+"\n"
             }
+            fin.close()
+            var usuario = xStream.fromXML(texto) as Usuario
 
-            //convertimos la cadena en objeto Usuario
-            var usuario: Usuario = xStream.fromXML(cadenaRecibida) as Usuario
+            return usuario
 
-            return  usuario //retornamos el objeto Usuario
         }
 
         catch(e:Exception){
             //enviar un mensaje de error de que no se pudo escribir el archivo
-            var toast = Toast.makeText(context,"Error en crear usuario",Toast.LENGTH_SHORT)
+            var toast = Toast.makeText(context,"Error en establecer usuario",Toast.LENGTH_SHORT)
             toast.show()
             return null
         }
@@ -108,7 +94,7 @@ class ConfiguracionUsuario(){
 
         //iniciamos el manejo de excepciones
         try{
-            archivo.delete() //eliminamos el archivo
+            context.deleteFile("usuario.xml") //eliminamos el archivo
         }
 
         catch (e:Exception){

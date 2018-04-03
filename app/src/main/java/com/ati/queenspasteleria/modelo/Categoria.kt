@@ -18,7 +18,7 @@ class Categoria(
 
     lateinit var urlCategoria:String
     init {
-        urlCategoria = Settings.url+"/categoria/"
+        urlCategoria = Settings.url+"/categoria/0"
     }
 
     fun obtenerCategorias(): ArrayList<Categoria>? {

@@ -19,8 +19,8 @@ import java.net.URLEncoder
 //Clase para almacenar las configuraciones del sistema
 class Settings(){
     companion object {
-        var host = "192.168.1.3"
-        val url ="http://"+host+":8080/api/index.php"
+        var host = "192.168.2.12"
+        val url ="http://"+host+"/api/index.php"
 
         val urlImagen ="http://www.hdfondos.org/file/28225/728x410/16:9/rosquillas-pasteles_1292467610.jpg"
         var iniciadaSesion:Boolean = false

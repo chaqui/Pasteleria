@@ -13,16 +13,16 @@ import java.net.URLEncoder
  * Created by josue on 18/12/17.
  */
  class Usuario (
-        @SerializedName("idCLiente")  var idCliente: Int,
-        @SerializedName("nombre") var nombre_cli: String,
-        @SerializedName("apellido") var apellido_cli: String,
-        @SerializedName("direccion") var direccion_cli:String,
-        @SerializedName("telefono") var telefono_cli:String,
-        @SerializedName("nickname") var nickname_cli: String,
-        @SerializedName("password") var password_cli: String,
-        @SerializedName("correo") var correo_cli:String,
-        @SerializedName("nit") var nit_cli:String,
-        @SerializedName("tipo") val tipo:String = "usuario"
+        @SerializedName("idCLiente_cli")  var idCliente: Int,
+        @SerializedName("nombre_cli") var nombre_cli: String,
+        @SerializedName("apellido_cli") var apellido_cli: String,
+        @SerializedName("direccion_cli") var direccion_cli:String,
+        @SerializedName("telefono_cli") var telefono_cli:String,
+        @SerializedName("nickname_cli") var nickname_cli: String,
+        @SerializedName("password_cli") var password_cli: String,
+        @SerializedName("correo_cli") var correo_cli:String,
+        @SerializedName("nit_cli") var nit_cli:String,
+        @SerializedName("tipo_cli") val tipo:String = "usuario"
 
 
 ){

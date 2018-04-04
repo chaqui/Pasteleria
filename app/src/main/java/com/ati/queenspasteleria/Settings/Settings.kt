@@ -19,8 +19,9 @@ import java.net.URLEncoder
 //Clase para almacenar las configuraciones del sistema
 class Settings(){
     companion object {
-        var host = "192.168.2.12"
-        val url ="http://"+host+"/api/index.php"
+        val host = "192.168.1.2"
+        val puerto =""
+        val url ="http://"+host+puerto+"/api/index.php"
 
         val urlImagen ="http://www.hdfondos.org/file/28225/728x410/16:9/rosquillas-pasteles_1292467610.jpg"
         var iniciadaSesion:Boolean = false
@@ -63,13 +64,14 @@ class Settings(){
 
         }
         fun recibirInfo( direccionUrl:String): String? {
-            Log.i("url",direccionUrl)
+
             var result:String
             var policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
             StrictMode.setThreadPolicy(policy)
             try {
-
-                var url = URL(direccionUrl)
+                val urlString = direccionUrl+"/0"
+                Log.i("url",urlString)
+                var url = URL(urlString)
                 var urlConnection = url.openConnection() as HttpURLConnection
                 urlConnection.requestMethod ="GET"
                 urlConnection.connect()

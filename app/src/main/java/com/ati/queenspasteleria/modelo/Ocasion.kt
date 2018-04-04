@@ -45,7 +45,7 @@ import com.google.gson.reflect.TypeToken
     fun obtenerOcasion(idproducto:String):Ocasion{
 
         //obtener el producto en String
-        var result = Settings.recibirInfo(urlOcasion+idproducto+"/0")
+        var result = Settings.recibirInfo(urlOcasion+idproducto)
         Log.i("json",result)
         //preparar la conversion a Json
         var gson = Gson()

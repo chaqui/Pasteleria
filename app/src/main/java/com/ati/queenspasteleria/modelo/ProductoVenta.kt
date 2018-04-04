@@ -45,7 +45,7 @@ open class  ProductoVenta(
 
 
         //obtener los productos en String
-        var result = Settings.recibirInfo(urlProductos+idCategoria+"/0")
+        var result = Settings.recibirInfo(urlProductos+idCategoria)
 
         //preparar la conversion a Json
         var gson = Gson()
@@ -64,8 +64,8 @@ open class  ProductoVenta(
         var result = Settings.recibirInfo(urlProducto+idproducto)
 
         //preparar la conversion a Json
-        var gson = Gson()
-        val productoVenta = gson.fromJson<ProductoVenta>(result,ProductoVenta::class.java)
+            var gson = Gson()
+            val productoVenta = gson.fromJson<ProductoVenta>(result,ProductoVenta::class.java)
 
         return productoVenta
     }

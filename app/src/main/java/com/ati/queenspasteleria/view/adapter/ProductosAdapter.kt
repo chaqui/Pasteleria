@@ -22,7 +22,6 @@ class ProductosAdapter(var productos:ArrayList<ProductoVenta>,
     :RecyclerView.Adapter<ProductosAdapter.ViewHolder>(),View.OnClickListener {
     private lateinit var listener:View.OnClickListener
     override fun onClick(p0: View?) {
-        Log.i("click","onclick")
         if(listener != null)
             listener.onClick(p0)
             }

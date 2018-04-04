@@ -1,9 +1,12 @@
 package com.ati.queenspasteleria.modelo
 
+import android.util.Log
 import com.ati.queenspasteleria.Settings.Settings
 import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
 import com.google.gson.annotations.SerializedName
 import com.google.gson.reflect.TypeToken
+import java.security.Provider
 import java.util.ArrayList
 
 /**
@@ -18,7 +21,7 @@ constructor():this(0,0)
 
     lateinit var urlOfertas:String
     init {
-        urlOfertas = Settings.url + "proventa/ofertas/"
+        urlOfertas = Settings.url + "/proventa/ofertas/"
     }
 
     fun obtenerOfertas(idProVenta:String): ArrayList<ProVentaAProOferta>? {
@@ -29,12 +32,15 @@ constructor():this(0,0)
 
         //preparar la conversion a Json
         var gson = Gson()
+        Log.i("result",result.toString())
         val turnsType = object : TypeToken<ArrayList<ProVentaAProOferta>>(){}.type
+        try{
 
-        //conversion de cadena a Json
-        val proVentaAProOfertas =  gson.fromJson<ArrayList<ProVentaAProOferta>>(result,turnsType)
-
-        return proVentaAProOfertas
+             return  gson.fromJson<ArrayList<ProVentaAProOferta>>(result,turnsType)
+        }
+        catch (e: JsonSyntaxException){
+            return null
+        }
 
     }
 }

@@ -22,8 +22,7 @@ import kotlin.collections.ArrayList
     //obtener oferta
     lateinit var urlOferta:String
 
-    //obtener las ofertas
-    lateinit var urlOfertas:String
+
     init{
         urlOferta = Settings.url+"/oferta/"
     }
@@ -44,16 +43,20 @@ import kotlin.collections.ArrayList
     fun obtenerOfertas(id: Int): ArrayList<Oferta>? {
         var ofertas = ArrayList<Oferta>()
         var proVentaAProOferta = ProVentaAProOferta()
-        var proVentaAProOfertas: ArrayList<ProVentaAProOferta> = proVentaAProOferta.obtenerOfertas(id.toString())!!
+        try{
+            var proVentaAProOfertas: ArrayList<ProVentaAProOferta> = proVentaAProOferta.obtenerOfertas(id.toString())!!
 
-        if(proVentaAProOfertas == null){
-            return  null
+            for (i in proVentaAProOfertas.indices){
+                ofertas.add(this.obtenerOferta(proVentaAProOfertas[i].oferta_idoferta.toString()))
+            }
+
+
+            return ofertas
         }
-        for (i in proVentaAProOfertas.indices){
-            ofertas.add(this.obtenerOferta(proVentaAProOfertas[i].oferta_idoferta.toString()))
+        catch (e: KotlinNullPointerException)
+        {
+            return null
         }
 
-
-        return ofertas
     }
 }

@@ -18,7 +18,6 @@ class FotografiasAdapter(var fotografiaPasteles: ArrayList<FotografiaPasteles>,
                          var resource: Int,
                          var Activity:Activity):RecyclerView.Adapter<FotografiasAdapter.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder{
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         var view = LayoutInflater.from(parent!!.context).inflate(
                 resource,
                 parent,
@@ -29,21 +28,25 @@ class FotografiasAdapter(var fotografiaPasteles: ArrayList<FotografiaPasteles>,
     }
 
     override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         return fotografiaPasteles.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
        var fotografiaProducto = fotografiaPasteles.get(position)
-        holder!!.iVProducto.setImageBitmap(Settings.recibirImagen(fotografiaProducto.urlFotografia))
-
+        try{
+            holder!!.iVProducto.setImageBitmap(Settings.recibirImagen(fotografiaProducto.urlFotografia))
+        }
+        catch (e: NullPointerException){
+            holder!!.iVProducto.setImageResource(R.drawable.mensaje)
+        }
 
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var iVProducto    =  itemView.findViewById<ImageView>(R.id.iVProducto)
-        fun bind(item: ClipData.Item, listener: (ClipData.Item) -> Unit) = with(itemView) {
 
+
+        fun bind(item: ClipData.Item, listener: (ClipData.Item) -> Unit) = with(itemView) {
 
             setOnClickListener { listener(item) }
         }

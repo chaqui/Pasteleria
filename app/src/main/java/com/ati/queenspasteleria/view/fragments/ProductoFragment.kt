@@ -81,44 +81,53 @@ class ProductoFragment : Fragment() {
 
 
         //Recycler View de Ofertas
+        var ofertas = buidOfertas(productoVenta.idpro_venta)
+        if(ofertas!=null)
+        {
+            var linearLayoutManager = LinearLayoutManager(context)
 
-        var linearLayoutManager = LinearLayoutManager(context)
+            linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
 
-        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+            var ofertasAdapter = OfertasAdapter(ofertas,
+                    R.layout.cardview_ofertas,
+                    activity)
 
-        var ofertasAdapter = OfertasAdapter(buidOfertas(
-                productoVenta.idpro_venta),
-                R.layout.cardview_ofertas,
-                activity)
+            listOfertas.layoutManager = linearLayoutManager
+            listOfertas.adapter = ofertasAdapter
 
-        listOfertas.layoutManager = linearLayoutManager
-        listOfertas.adapter = ofertasAdapter
-
+        }
 
         //Recycler View de Fotografias
+        /*if(fotografiaPasteles!= null){
+            var linearLayoutManagerh = LinearLayoutManager(context)
 
-        var linearLayoutManagerh = LinearLayoutManager(context)
+            linearLayoutManagerh.orientation = LinearLayoutManager.HORIZONTAL
 
-        linearLayoutManagerh.orientation = LinearLayoutManager.HORIZONTAL
+            var fotografiasAdapter = FotografiasAdapter(fotografiaPasteles,
+                    R.layout.cardview_ofertas,
+                    activity)
 
-        var fotografiasAdapter = FotografiasAdapter(fotografiaPasteles,
-                R.layout.cardview_ofertas,
-                activity)
-
-        listFotografias.layoutManager = linearLayoutManagerh
-        listFotografias.adapter = fotografiasAdapter
-
-
+            listFotografias.layoutManager = linearLayoutManagerh
+            listFotografias.adapter = fotografiasAdapter
+        }
+          */
 
 
 
         return view
     }
 
-    fun buidOfertas(id:Int):ArrayList<Oferta>{
-        var oferta = Oferta()
-        var ofertas:ArrayList<Oferta> = oferta.obtenerOfertas(id)!!
-        return ofertas
+    fun buidOfertas(id:Int): ArrayList<Oferta>? {
+        try {
+            var oferta = Oferta()
+            var ofertas:ArrayList<Oferta> = oferta.obtenerOfertas(id)!!
+            return ofertas
+        }
+        catch (e:KotlinNullPointerException )
+        {
+            return null
+        }
+
     }
 
     fun buidFotografias(id:Int):ArrayList<FotografiaPasteles>{

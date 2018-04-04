@@ -47,7 +47,6 @@ class ProductosFragment() : Fragment() {
 
         productosAdapter.setOnClickListener(object: View.OnClickListener{
             override fun onClick(p0: View?) {
-                Log.i("click","vamos")
                 var idProducto = productosAdapter.productos[listProductos.getChildPosition(p0)]
                         .idpro_venta
 

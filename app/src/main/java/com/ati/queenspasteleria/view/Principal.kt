@@ -122,11 +122,24 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
             }
             R.id.usuario ->{
                 Log.i("when","Usuario")
-                toolbar.title="Usuario"
-                var transaction = supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.contenedor_principal,UsuarioFragment())
-                transaction.addToBackStack(null)
-                transaction.commit()
+                var configuracionUsuario = ConfiguracionUsuario()
+                if(!configuracionUsuario.verificarUsuarioInicioSesion()){
+                    toolbar.title="Iniciar Sesion"
+                    var transaction = supportFragmentManager.beginTransaction()
+                    transaction.replace(R.id.contenedor_principal,LoginFragment())
+                    transaction.addToBackStack(null)
+                    transaction.commit()
+                    return true
+                }
+                else{
+                    toolbar.title="Usuario"
+                    var transaction = supportFragmentManager.beginTransaction()
+                    transaction.replace(R.id.contenedor_principal,UsuarioFragment())
+                    transaction.addToBackStack(null)
+                    transaction.commit()
+                    return  true
+                }
+
                 return true
             }
             R.id.login->{

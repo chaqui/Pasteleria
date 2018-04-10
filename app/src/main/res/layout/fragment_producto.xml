@@ -7,25 +7,21 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/grisFondo">
+        android:layout_height="wrap_content">
 
-
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.9">
-
+            android:orientation="vertical" >
             <ImageView
+                android:layout_margin="0dp"
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="top"
+                android:layout_marginTop="0dp"
                 android:src="@drawable/side_nav_bar" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -47,57 +43,60 @@
                     android:text="TextView" />
             </LinearLayout>
 
-        </FrameLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingLeft="@dimen/paddingCard"
-                android:paddingRight="@dimen/paddingCard"
+                android:orientation="vertical">
 
-                >
-
-                <TextView
-                    android:id="@+id/txVDescripcion"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:text="TextView"
-                    android:textAlignment="textEnd" />
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/paddingCard"
+                    android:paddingRight="@dimen/paddingCard"
 
-                <TextView
-                    android:id="@+id/txVPrecio"
+                    >
+
+                    <TextView
+                        android:id="@+id/txVDescripcion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:text="TextView"
+                        android:textAlignment="textEnd" />
+
+                    <TextView
+                        android:id="@+id/txVPrecio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="TextView"
+                        android:textSize="@dimen/textTitulo"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/listOfertas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:textSize="@dimen/textTitulo"
-                    android:textStyle="bold" />
+                    android:scrollbars="vertical">
+
+
+                </android.support.v7.widget.RecyclerView>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/listFotografias"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="horizontal">
+
+                </android.support.v7.widget.RecyclerView>
+
             </LinearLayout>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/listOfertas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="vertical">
-
-
-            </android.support.v7.widget.RecyclerView>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/listFotografias"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="horizontal">
-
-            </android.support.v7.widget.RecyclerView>
 
         </LinearLayout>
 
-    </LinearLayout>
+
+    </ScrollView>
 </FrameLayout>

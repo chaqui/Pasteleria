@@ -8,6 +8,7 @@
     cardview:cardCornerRadius="@dimen/cornerRadiusCardView"
     android:layout_margin="@dimen/MarginCardView">
 
+
     <TextView
         android:id="@+id/txWTitulo"
         android:padding="@dimen/paddingCard"

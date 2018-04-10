@@ -19,6 +19,7 @@ import java.net.URLEncoder
 //Clase para almacenar las configuraciones del sistema
 class Settings(){
     companion object {
+        //val host = "192.168.2.12"
         val host = "192.168.1.2"
         val puerto =""
         val url ="http://"+host+puerto+"/api/index.php"

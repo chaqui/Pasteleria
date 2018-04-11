@@ -4,13 +4,13 @@ package com.ati.queenspasteleria.view.fragments
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.TextView
 import com.ati.queenspasteleria.R
 import com.ati.queenspasteleria.modelo.ProductoVenta
 import com.ati.queenspasteleria.view.adapter.ProductosAdapter
@@ -27,6 +27,11 @@ class ProductosFragment() : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         var view = inflater!!.inflate(R.layout.fragment_productos, container, false)
+        setHasOptionsMenu(true)
+        var toolbar_search = view.findViewById<Toolbar>(R.id.tool_bar_search)
+        var act = activity as AppCompatActivity
+        act.setSupportActionBar(toolbar_search)
+
         var listProductos = view.findViewById<RecyclerView>(R.id.listProductos)
 
         var linearLayoutManager = LinearLayoutManager(context)
@@ -37,8 +42,9 @@ class ProductosFragment() : Fragment() {
 
         val args = arguments
         val nombre = args.getString("categoria")
-        activity.title= nombre
-
+        //val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
+        //var toolbar_title = toolbar.findViewById<TextView>(R.id.toolbar_title)
+        //toolbar_title.text=nombre
         var productosAdapter = ProductosAdapter(
                 buidProductos(),
                 R.layout.cardview_productos,
@@ -67,6 +73,7 @@ class ProductosFragment() : Fragment() {
         listProductos.adapter = productosAdapter
         return view
     }
+
 
     fun buidProductos ():ArrayList<ProductoVenta> {
 

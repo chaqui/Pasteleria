@@ -29,7 +29,7 @@ class NuevoUsuarioFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
          var view=  inflater!!.inflate(R.layout.fragment_nuevo_usuario, container, false)
-            activity.toolbar.title="Nuevo Usuario"
+         //   activity.toolbar.title="Nuevo Usuario"
         //obteniendo cada objeto de la vista
         var txINombre = view.findViewById<TextInputEditText>(R.id.txINombre)
         var txIApellido = view.findViewById<TextInputEditText>(R.id.txIApellido)

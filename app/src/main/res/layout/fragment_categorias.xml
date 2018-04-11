@@ -5,13 +5,25 @@
     tools:context="com.ati.queenspasteleria.view.fragments.CategoriasFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/listCategorias"
-        android:scrollbars="vertical"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/tool_bar_search"
+            layout="@layout/tool_bar_search"
+            ></include>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/listCategorias"
+            android:scrollbars="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
 
 
 
-    </android.support.v7.widget.RecyclerView>
+
+
 </FrameLayout>

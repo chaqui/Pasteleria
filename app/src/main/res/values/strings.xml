@@ -63,6 +63,6 @@
     <string name="fechaInicio">Fecha de Inicio:</string>
     <string name="fechaFinalizacio">Fecha de Finalización:</string>
     <string name="cantidaCompra">Cantidad de Compra:</string>
-
+    <string name="search">buscar</string>
 
 </resources>

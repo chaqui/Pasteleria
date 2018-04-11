@@ -59,7 +59,16 @@
                 android:textSize="@dimen/size_text"
                 android:textStyle="normal"
                 tools:textColor="@android:color/black" />
+
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:src="@drawable/ic_chevron_right_black_24dp"/>
 
     </LinearLayout>
 

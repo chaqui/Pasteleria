@@ -1,17 +1,19 @@
 package com.ati.queenspasteleria.view.fragments
 
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.support.v7.widget.Toolbar
+import android.view.*
 import com.ati.queenspasteleria.R
 import com.ati.queenspasteleria.modelo.Categoria
 import com.ati.queenspasteleria.view.adapter.PictureAdapterCategorias
 import kotlinx.android.synthetic.main.app_bar_principal.*
+import kotlinx.android.synthetic.main.tool_bar_search.*
 
 
 /**
@@ -24,6 +26,11 @@ class CategoriasFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         var view = inflater!!.inflate(R.layout.fragment_categorias, container, false)
+        setHasOptionsMenu(true)
+        var toolbar_search = view.findViewById<Toolbar>(R.id.tool_bar_search)
+        var act = activity as AppCompatActivity
+        act.setSupportActionBar(toolbar_search)
+
         //llamamos el recicler para controlarlo
         var listCategorias  =  view.findViewById<RecyclerView>(R.id.listCategorias)
         //creamos el configurador del recicler
@@ -66,6 +73,17 @@ class CategoriasFragment : Fragment() {
 
         return view
 
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+       setHasOptionsMenu(true)
+        super.onActivityCreated(savedInstanceState)
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater!!.inflate(R.menu.principal,menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
     //aca hacemos la peticion y llenamos el cardVIew con la informacion Necesarioa
     fun buidCategorias ():ArrayList<Categoria>{

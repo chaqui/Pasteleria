@@ -29,14 +29,22 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_principal)
-        setSupportActionBar(toolbar)
+       // setSupportActionBar(toolbar)
         val toggle = ActionBarDrawerToggle(
-                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+                this, drawer_layout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
+        // var toolbar_title = toolbar.findViewById<TextView>(R.id.toolbar_title)
+
+       // toolbar_title.text= "Categorias"
 
 
+        var transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.contenedor_principal,CategoriasFragment())
+        transaction.addToBackStack(null)
+        transaction.commit()
+        nav_view.setNavigationItemSelectedListener(this)
 
 
         //evento del textView de inciar Sesion
@@ -49,7 +57,7 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
             var configuracionUsuario = ConfiguracionUsuario()
             //si no esta loggeado abrir fragment logib
             if(!configuracionUsuario.verificarUsuarioInicioSesion()){
-                toolbar.title="Iniciar Sesion"
+                //toolbar.title="Iniciar Sesion"
                 var transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.contenedor_principal,LoginFragment())
                 transaction.addToBackStack(null)
@@ -67,11 +75,6 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
 
 
-        var transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.contenedor_principal,CategoriasFragment())
-        transaction.addToBackStack(null)
-        transaction.commit()
-        nav_view.setNavigationItemSelectedListener(this)
 
     }
 
@@ -85,8 +88,8 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.principal, menu)
-        menuInflater.inflate(R.menu.principal, menu)
+
+
         return true
     }
 
@@ -113,7 +116,7 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 return true}
             R.id.Pedidos -> {
                 Log.i("when","Pedidos")
-                toolbar.title="Pedidos"
+                //toolbar_title.text= "Pedidos"
                 var transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.contenedor_principal,ProductosFragment())
                 transaction.addToBackStack(null)
@@ -124,7 +127,7 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 Log.i("when","Usuario")
                 var configuracionUsuario = ConfiguracionUsuario()
                 if(!configuracionUsuario.verificarUsuarioInicioSesion()){
-                    toolbar.title="Iniciar Sesion"
+                    //toolbar_title.text= "Iniciar Sesion"
                     var transaction = supportFragmentManager.beginTransaction()
                     transaction.replace(R.id.contenedor_principal,LoginFragment())
                     transaction.addToBackStack(null)
@@ -132,7 +135,7 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                     return true
                 }
                 else{
-                    toolbar.title="Usuario"
+                    //toolbar_title.text= "Usuario"
                     var transaction = supportFragmentManager.beginTransaction()
                     transaction.replace(R.id.contenedor_principal,UsuarioFragment())
                     transaction.addToBackStack(null)
@@ -145,7 +148,7 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
             R.id.login->{
                 var configuracionUsuario = ConfiguracionUsuario()
                 if(!configuracionUsuario.verificarUsuarioInicioSesion()){
-                    toolbar.title="Iniciar Sesion"
+                    //toolbar_title.text= "Iniciar Sesion"
                     var transaction = supportFragmentManager.beginTransaction()
                     transaction.replace(R.id.contenedor_principal,LoginFragment())
                     transaction.addToBackStack(null)

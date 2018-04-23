@@ -115,8 +115,6 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 transaction.commit()
                 return true}
             R.id.Pedidos -> {
-                Log.i("when","Pedidos")
-                //toolbar_title.text= "Pedidos"
                 var transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.contenedor_principal,ProductosFragment())
                 transaction.addToBackStack(null)

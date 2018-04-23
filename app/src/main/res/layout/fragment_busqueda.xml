@@ -36,7 +36,6 @@
                 android:background="@color/colorPrimary"
                 android:src="@drawable/ic_search_black_24dp" />
 
-
         </LinearLayout>
     </android.support.v7.widget.Toolbar>
 

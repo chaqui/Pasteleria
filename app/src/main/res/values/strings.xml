@@ -64,5 +64,5 @@
     <string name="fechaFinalizacio">Fecha de Finalización:</string>
     <string name="cantidaCompra">Cantidad de Compra:</string>
     <string name="search">buscar</string>
-
+    <string name="recuperar_contrasenia">recuperar contraseña</string>
 </resources>

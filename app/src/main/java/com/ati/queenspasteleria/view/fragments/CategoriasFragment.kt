@@ -1,25 +1,18 @@
 package com.ati.queenspasteleria.view.fragments
 
-
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.support.transition.Slide
 import android.support.v4.app.Fragment
-import android.support.v4.view.GravityCompat
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.*
 import android.widget.ImageButton
-import android.widget.TextView
 import com.ati.queenspasteleria.R
 import com.ati.queenspasteleria.modelo.Categoria
 import com.ati.queenspasteleria.view.adapter.PictureAdapterCategorias
-import kotlinx.android.synthetic.main.app_bar_principal.*
-import kotlinx.android.synthetic.main.tool_bar_search.*
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_principal.*
+
+
 
 
 /**
@@ -54,12 +47,16 @@ class CategoriasFragment : Fragment() {
         {
             override fun onClick(v: View?)
             {
+                val toast1 = Toast.makeText(context,"Toast por defecto", Toast.LENGTH_SHORT)
+                toast1.show()
+
                 var busquedaFragment = BusquedaFragment()
                 var transaction = fragmentManager.beginTransaction()
 
-               transaction.replace(R.id.contenedor_principal, busquedaFragment)
+                transaction.replace(R.id.contenedor_principal, busquedaFragment)
                 transaction.addToBackStack(null)
                 transaction.commit()
+
             }
         })
 

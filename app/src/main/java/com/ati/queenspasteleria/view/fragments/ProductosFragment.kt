@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.*
+import android.widget.ImageView
 import android.widget.TextView
 import com.ati.queenspasteleria.R
 import com.ati.queenspasteleria.modelo.ProductoVenta
@@ -42,9 +43,7 @@ class ProductosFragment() : Fragment() {
 
         val args = arguments
         val nombre = args.getString("categoria")
-        //val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
-        //var toolbar_title = toolbar.findViewById<TextView>(R.id.toolbar_title)
-        //toolbar_title.text=nombre
+
         var productosAdapter = ProductosAdapter(
                 buidProductos(),
                 R.layout.cardview_productos,

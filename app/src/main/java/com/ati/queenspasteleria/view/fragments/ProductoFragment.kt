@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toolbar
 import com.ati.queenspasteleria.R
 import com.ati.queenspasteleria.Settings.Settings
 import com.ati.queenspasteleria.modelo.FotografiaPasteles
@@ -47,14 +48,17 @@ class ProductoFragment : Fragment() {
         var productoVenta = ProductoVenta().obtenerProducto(id.toString())
 
 
+
         //conectar a objetos del Fragment
-        var imageView2 = view.findViewById<ImageView>(R.id.imageView2)
+        //var imageView2 = view.findViewById<ImageView>(R.id.imageView2)
         var txNombreProducto = view.findViewById<TextView>(R.id.txNombreProducto)
         var txVOcaciones = view.findViewById<TextView>(R.id.txVOcaciones)
         var txVDescripcion = view.findViewById<TextView>(R.id.txVDescripcion)
         var txVPrecio = view.findViewById<TextView>(R.id.txVPrecio)
         var listOfertas = view.findViewById<RecyclerView>(R.id.listOfertas)
         var listFotografias = view.findViewById<RecyclerView>(R.id.listFotografias)
+        var tool_bar = view.findViewById<Toolbar>(R.id.tool_bar)
+        var imgVToolbar = tool_bar.findViewById<ImageView>(R.id.imgVToolbar)
 
 
         //                   mostrar informacion  del producto
@@ -62,7 +66,7 @@ class ProductoFragment : Fragment() {
         var fotografiaPasteles = buidFotografias(productoVenta.idpro_venta)
 
         //mostrar imagen de cabecera
-        imageView2.setImageBitmap(Settings.recibirImagen(fotografiaPasteles[0].urlFotografia))
+        imgVToolbar.setImageBitmap(Settings.recibirImagen(fotografiaPasteles[0].urlFotografia))
 
        //nombre del producto
         txNombreProducto.text = productoVenta.nombre_pro_venta

@@ -74,7 +74,7 @@ class NuevoUsuarioFragment : Fragment() {
 
                     //creación del objeto de usuario
                     var usuario = Usuario(0,nombre,apellido,direccion,telefono,nickName,
-                            correoElectronico,contrasenia1,nit)
+                            contrasenia1,correoElectronico,nit)
                     if(usuario.crearUsuario()) { //enviar el objeto usuario para almacenar
                         var configuracionUsuario = ConfiguracionUsuario()
                         configuracionUsuario.crearArchivoUsuario(usuario,context)

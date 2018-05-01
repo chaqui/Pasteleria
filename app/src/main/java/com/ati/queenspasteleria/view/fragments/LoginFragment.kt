@@ -40,8 +40,9 @@ class LoginFragment : Fragment() {
                     var contrasenia = verificar.verificarSiEstaVacio(contraseniaLogin.text.toString(),
                             "contraseña")
 
+
                     var usuarioLogin = UsuarioLogin(usuario,contrasenia)
-                    usuarioLogin.loggear()
+                    usuarioLogin.loggear(context)
 
                 }
                 catch (e: ExcepcionCampoVacio){
@@ -56,6 +57,12 @@ class LoginFragment : Fragment() {
             transaction.commit()
         }
 
+        txOlvidoContrasenia.setOnClickListener{
+            var transaction = fragmentManager.beginTransaction()
+            transaction.replace(R.id.contenedor_principal,RecuperarCOntraseniaFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
         return view
     }
 

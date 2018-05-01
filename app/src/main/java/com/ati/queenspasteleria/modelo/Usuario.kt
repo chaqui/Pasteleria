@@ -37,8 +37,7 @@ import java.net.URLEncoder
 
 
         //configurando el data
-        var gson = Gson()
-        var data = gson.toJson(this) as String
+            val data = usuarioAJson()
          return Settings.enviarPorPost(data,urlUsuario)
 
         }
@@ -46,7 +45,9 @@ import java.net.URLEncoder
             return false
         }
     }
-    fun modificarUsuario(){
-        
+    fun usuarioAJson(): String {
+        var gson = Gson()
+        var data = gson.toJson(this) as String
+        return data
     }
 }

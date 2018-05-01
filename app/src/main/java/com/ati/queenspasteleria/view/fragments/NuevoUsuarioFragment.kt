@@ -16,7 +16,9 @@ import com.ati.queenspasteleria.Settings.ConfiguracionUsuario
 import com.ati.queenspasteleria.Settings.VerificarCampos
 import com.ati.queenspasteleria.excepciones.ExcepcionTamanioCadena
 import com.ati.queenspasteleria.modelo.Usuario
+import com.ati.queenspasteleria.modelo.UsuarioLogin
 import kotlinx.android.synthetic.main.app_bar_principal.*
+import kotlinx.android.synthetic.main.fragment_login.*
 
 
 /**
@@ -71,15 +73,18 @@ class NuevoUsuarioFragment : Fragment() {
 
                 //verificamos si las contraseñas son correctas
                 if(contrasenia1.equals(contrasenia2)){
+                    val usuarioLogin = UsuarioLogin(nickName, contrasenia1)
+                    if(!usuarioLogin.verificar() ){
+                        //creación del objeto de usuario
+                        var usuario = Usuario(0,nombre,apellido,direccion,telefono,nickName,
+                                contrasenia1,correoElectronico,nit)
+                        if(usuario.crearUsuario()) { //enviar el objeto usuario para almacenar
+                            var configuracionUsuario = ConfiguracionUsuario()
+                            configuracionUsuario.crearArchivoUsuario(usuario,context)
 
-                    //creación del objeto de usuario
-                    var usuario = Usuario(0,nombre,apellido,direccion,telefono,nickName,
-                            contrasenia1,correoElectronico,nit)
-                    if(usuario.crearUsuario()) { //enviar el objeto usuario para almacenar
-                        var configuracionUsuario = ConfiguracionUsuario()
-                        configuracionUsuario.crearArchivoUsuario(usuario,context)
-
+                        }
                     }
+
                 }
                 else{
                     throw Exception()

@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.ati.queenspasteleria.R
-
+import com.ati.queenspasteleria.modelo.UsuarioLogin
 
 /**
  * A simple [Fragment] subclass.
@@ -26,7 +26,9 @@ class RecuperarCOntraseniaFragment : Fragment() {
 
         btRecuperarContasenia.setOnClickListener(object: View.OnClickListener{
             override fun onClick(p0: View?) {
-
+                val usuario = usuarioRecuperar.text.toString()
+                val usuarioLogin = UsuarioLogin(usuario,"")
+                usuarioLogin.recuperarContrasenia()
             }
 
         })

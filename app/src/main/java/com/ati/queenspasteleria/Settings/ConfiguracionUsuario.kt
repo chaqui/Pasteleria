@@ -24,9 +24,16 @@ class ConfiguracionUsuario(){
 
     }
     //verificacion si el archivo usuario.xml existe
-    fun verificarUsuarioInicioSesion():Boolean{
-        var archivo = File(nombreArchivo)
-        return  archivo.exists()
+    fun verificarUsuarioInicioSesion(context: Context):Boolean{
+        try{
+            var file  = context.openFileInput(nombreArchivo)
+            return  true
+        }
+        catch (e:Exception)
+        {
+            return false
+        }
+
         }
 
     //crear el archivo usuario.xml
@@ -34,11 +41,10 @@ class ConfiguracionUsuario(){
         //configuracion del convertidor de XML
 
         try{
-
-            var file =OutputStreamWriter (context.openFileOutput (nombreArchivo, Context.MODE_PRIVATE))
-            if(verificarUsuarioInicioSesion()){
+            if(verificarUsuarioInicioSesion(context)){
                 eliminarRegistroUsuario(context)
             }
+            var file =OutputStreamWriter (context.openFileOutput (nombreArchivo, Context.MODE_PRIVATE))
             file.write(usuario)
             file.flush()
             file.close()
@@ -114,6 +120,7 @@ class ConfiguracionUsuario(){
         //iniciamos el manejo de excepciones
         try{
             context.deleteFile(nombreArchivo) //eliminamos el archivo
+            Log.i("eleminar","archivo eliminado")
         }
 
         catch (e:Exception){

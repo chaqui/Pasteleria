@@ -65,5 +65,8 @@ class LoginFragment : Fragment() {
         }
         return view
     }
+    fun insertarInformacion(){
+
+    }
 
 }// Required empty public constructor

@@ -37,7 +37,10 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
         // var toolbar_title = toolbar.findViewById<TextView>(R.id.toolbar_title)
 
-       // toolbar_title.text= "Categorias"
+       // toolbar_title.text= "Categorias"z
+
+
+
 
 
         var transaction = supportFragmentManager.beginTransaction()
@@ -51,12 +54,12 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         var navigationView = findViewById<NavigationView>(R.id.nav_view)
         var headerView = navigationView.getHeaderView(0)
         var txVInicieSesion = headerView.findViewById<TextView>(R.id.txVInicieSesion)
-
+        var configuracionUsuario = ConfiguracionUsuario()
         txVInicieSesion.setOnClickListener({
             drawer_layout.closeDrawer(GravityCompat.START)
-            var configuracionUsuario = ConfiguracionUsuario()
+
             //si no esta loggeado abrir fragment logib
-            if(!configuracionUsuario.verificarUsuarioInicioSesion()){
+            if(!configuracionUsuario.verificarUsuarioInicioSesion(this)){
                 //toolbar.title="Iniciar Sesion"
                 var transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.contenedor_principal,LoginFragment())
@@ -72,6 +75,11 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 transaction.commit()
             }
         })
+
+        if(configuracionUsuario.verificarUsuarioInicioSesion(this)){
+
+                }
+
 
 
 
@@ -124,7 +132,7 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
             R.id.usuario ->{
                 Log.i("when","Usuario")
                 var configuracionUsuario = ConfiguracionUsuario()
-                if(!configuracionUsuario.verificarUsuarioInicioSesion()){
+                if(!configuracionUsuario.verificarUsuarioInicioSesion(this)){
                     //toolbar_title.text= "Iniciar Sesion"
                     var transaction = supportFragmentManager.beginTransaction()
                     transaction.replace(R.id.contenedor_principal,LoginFragment())
@@ -145,7 +153,7 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
             }
             R.id.login->{
                 var configuracionUsuario = ConfiguracionUsuario()
-                if(!configuracionUsuario.verificarUsuarioInicioSesion()){
+                if(!configuracionUsuario.verificarUsuarioInicioSesion(this)){
                     //toolbar_title.text= "Iniciar Sesion"
                     var transaction = supportFragmentManager.beginTransaction()
                     transaction.replace(R.id.contenedor_principal,LoginFragment())

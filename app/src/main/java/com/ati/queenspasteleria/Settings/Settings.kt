@@ -20,7 +20,7 @@ import java.net.URLEncoder
 class Settings(){
     companion object {
         //val host = "192.168.2.12"
-        val host = "192.168.1.4"
+        val host = "192.168.1.3"
         val puerto =""
         val url ="http://"+host+puerto+"/api/index.php"
 

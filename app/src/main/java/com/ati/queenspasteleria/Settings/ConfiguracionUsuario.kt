@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import com.ati.queenspasteleria.modelo.Usuario
+import com.google.gson.Gson
 import com.thoughtworks.xstream.XStream
 import java.io.*
 import javax.xml.parsers.DocumentBuilderFactory
@@ -61,49 +62,35 @@ class ConfiguracionUsuario(){
     }
 
     fun crearArchivoUsuario(usuario:Usuario, context: Context){
-        //configuracion del convertidor de XML
-        xStream.alias("usuario",Usuario::class.java)
-        //iniciamos el mwanejo de excepciones
-        try{
-
-            val file = FileWriter("test.json")
-            file.write(usuario.usuarioAJson())
-            file.flush()
-            file.close()
-
+        crearArchivoUsuario(usuario.usuarioAJson(),context)
 
         }
 
-        catch (e:Exception){
-            //enviar un mensaje de error de que no se pudo escribir el archivo
-            Log.i("Ficheros","fichero no Creado")
-            var toast = Toast.makeText(context,"Error en crear usuario",Toast.LENGTH_SHORT)
-            toast.show()
-        }
-    }
+
 
 
     fun leerArhivoUsuario(context:Context): Usuario? {
-        //configuracion del convertidor de XML
-        xStream.alias("usuario",Usuario::class.java)
+        //configuracion del convertidor de json
+        var gson = Gson()
 
         try{
-            var fin = BufferedReader(InputStreamReader(context.openFileInput("usuario.xml")))
+            var fin = BufferedReader(InputStreamReader(context.openFileInput(nombreArchivo)))
             var texto =""
             var linea:String? = null
 
             while ({linea = fin.readLine(); linea}() != null){
-                texto = linea+"\n"
+                texto = texto + linea+"\n"
             }
             fin.close()
-            var usuario = xStream.fromXML(texto) as Usuario
+            val usuario = gson.fromJson<Usuario>(texto, Usuario::class.java)
 
             return usuario
 
         }
 
         catch(e:Exception){
-            //enviar un mensaje de error de que no se pudo escribir el archivo
+            //enviar un mensaje de error de que no se pudo leer el archivo
+            Log.e("error de lectura",e.toString())
             var toast = Toast.makeText(context,"Error en establecer usuario",Toast.LENGTH_SHORT)
             toast.show()
             return null
@@ -125,6 +112,7 @@ class ConfiguracionUsuario(){
 
         catch (e:Exception){
             //enviar un mensaje de error de que no se pudo eliminar el archivo
+
             var toast = Toast.makeText(context,"Error en eliminar usuario",Toast.LENGTH_SHORT)
             toast.show()
 

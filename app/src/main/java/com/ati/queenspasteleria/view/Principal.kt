@@ -1,6 +1,7 @@
 package com.ati.queenspasteleria.view
 
 import android.app.Fragment
+import android.content.ClipData
 import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
@@ -43,6 +44,7 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
 
 
+
         var transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.contenedor_principal,CategoriasFragment())
         transaction.addToBackStack(null)
@@ -54,7 +56,23 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         var navigationView = findViewById<NavigationView>(R.id.nav_view)
         var headerView = navigationView.getHeaderView(0)
         var txVInicieSesion = headerView.findViewById<TextView>(R.id.txVInicieSesion)
+
+        var menu = navigationView.menu
+
+        var itemLogin = menu.findItem(R.id.login)
+
+
+
         var configuracionUsuario = ConfiguracionUsuario()
+
+        if (configuracionUsuario.verificarUsuarioInicioSesion(this )){
+            val usuario = configuracionUsuario.leerArhivoUsuario(this)
+            if (usuario != null) {
+                txVInicieSesion.text = usuario.nickname_cli
+                itemLogin.title = "Salir"
+            }
+        }
+
         txVInicieSesion.setOnClickListener({
             drawer_layout.closeDrawer(GravityCompat.START)
 
@@ -175,26 +193,21 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
     }
 
     fun preguntarPorSalir(context:Context){
-        var mensajeDeAlerta = AlertDialog.Builder(context).create()
+        var mensajeDeAlerta = AlertDialog.Builder(context)
         mensajeDeAlerta.setTitle("alerta!")
         mensajeDeAlerta.setMessage("¿Quiere Cerrar Sesion?")
         var transaction = supportFragmentManager.beginTransaction()
-        mensajeDeAlerta.setButton(AlertDialog.BUTTON_POSITIVE,"si",{
-
-            dialogInterface, i ->
+        mensajeDeAlerta.setPositiveButton("SI", {dialogInterface: DialogInterface, i: Int ->
             val configuracionDeUsuario = ConfiguracionUsuario()
             configuracionDeUsuario.eliminarRegistroUsuario(this)
             transaction.replace(R.id.contenedor_principal,ProductosFragment())
                     .addToBackStack(null).commit()
-            
         })
-        mensajeDeAlerta.setButton(AlertDialog.BUTTON_NEGATIVE,"no",{
-            dialogInterface, i ->
+        mensajeDeAlerta.setNegativeButton("no",{dialogInterface: DialogInterface, i: Int ->
             transaction.replace(R.id.contenedor_principal,ProductosFragment())
                     .addToBackStack(null).commit()
-
         })
-        
+        mensajeDeAlerta.show()
     }
 
 }

@@ -1,11 +1,8 @@
 package com.ati.queenspasteleria.view
 
-import android.app.Fragment
-import android.content.ClipData
 import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
@@ -15,14 +12,12 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
+import android.support.v7.widget.Toolbar
+import android.view.View
 import com.ati.queenspasteleria.R
 import com.ati.queenspasteleria.Settings.ConfiguracionUsuario
-import com.ati.queenspasteleria.view.fragments.CategoriasFragment
-import com.ati.queenspasteleria.view.fragments.LoginFragment
-import com.ati.queenspasteleria.view.fragments.ProductosFragment
-import com.ati.queenspasteleria.view.fragments.UsuarioFragment
+import com.ati.queenspasteleria.view.fragments.*
 import kotlinx.android.synthetic.main.activity_principal.*
-import kotlinx.android.synthetic.main.app_bar_principal.*
 
 class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -30,18 +25,18 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_principal)
-       // setSupportActionBar(toolbar)
+
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
-        // var toolbar_title = toolbar.findViewById<TextView>(R.id.toolbar_title)
+        var toolbar = findViewById<Toolbar>(R.id.tool_bar)
 
-       // toolbar_title.text= "Categorias"z
+        setSupportActionBar(toolbar)
 
-
-
+        supportActionBar!!.title="Queens Pasteleria"
+        supportActionBar!!.subtitle="Categorias"
 
 
 
@@ -98,10 +93,6 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
                 }
 
-
-
-
-
     }
 
     override fun onBackPressed() {
@@ -115,8 +106,7 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
 
-
-        return true
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -124,7 +114,13 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
-
+            R.id.busquedaPasteles->{
+                var transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.contenedor_principal,BusquedaFragment())
+                transaction.addToBackStack(null)
+                transaction.commit()
+                return  true
+            }
         }
         return true
     }
@@ -185,6 +181,8 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 }
                 return true
             }
+
+
             else -> return super.onOptionsItemSelected(item)
         }
 

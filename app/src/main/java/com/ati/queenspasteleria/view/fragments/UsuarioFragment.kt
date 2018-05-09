@@ -3,9 +3,7 @@ package com.ati.queenspasteleria.view.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Button
 import android.widget.TextView
 
@@ -47,5 +45,11 @@ class UsuarioFragment : Fragment() {
 
         return view
     }
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?)
+    {
+        inflater!!.inflate(R.menu.toolbar_principal,menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
 
 }// Required empty public constructor

@@ -30,20 +30,20 @@ class CategoriasFragment : Fragment() {
 
 
 
+
         /*Funciones y elementos del Toolbar
          *conectandose al tooolbar
         */
         var toolbar_search = view.findViewById<Toolbar>(R.id.tool_bar_search)
 
         //conectandose al ImageButton del Toolbar
-        var imageButton2 = toolbar_search.findViewById<ImageButton>(R.id.imageButton2)
 
 
 
         //                  eventos del Toolbar
 
         //evento de la busqueda del toolbar
-        imageButton2.setOnClickListener(object : View.OnClickListener
+       /* imageButton2.setOnClickListener(object : View.OnClickListener
         {
             override fun onClick(v: View?)
             {
@@ -59,7 +59,7 @@ class CategoriasFragment : Fragment() {
 
             }
         })
-
+*/
 
         //llamamos el recicler para controlarlo
         var listCategorias  =  view.findViewById<RecyclerView>(R.id.listCategorias)

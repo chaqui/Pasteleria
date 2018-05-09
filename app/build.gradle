@@ -45,7 +45,9 @@ dependencies {
     implementation('com.thoughtworks.xstream:xstream:1.4.7') {
         exclude group: 'xmlpull', module: 'xmlpull'
     }
+
     implementation 'com.google.code.gson:gson:2.8.1'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
 
 
 }

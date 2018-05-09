@@ -58,7 +58,7 @@ class ProductoFragment : Fragment() {
         var listOfertas = view.findViewById<RecyclerView>(R.id.listOfertas)
         var listFotografias = view.findViewById<RecyclerView>(R.id.listFotografias)
         var tool_bar = view.findViewById<Toolbar>(R.id.tool_bar)
-        var imgVToolbar = tool_bar.findViewById<ImageView>(R.id.imgVToolbar)
+
 
 
         //                   mostrar informacion  del producto
@@ -66,7 +66,6 @@ class ProductoFragment : Fragment() {
         var fotografiaPasteles = buidFotografias(productoVenta.idpro_venta)
 
         //mostrar imagen de cabecera
-        imgVToolbar.setImageBitmap(Settings.recibirImagen(fotografiaPasteles[0].urlFotografia))
 
        //nombre del producto
         txNombreProducto.text = productoVenta.nombre_pro_venta

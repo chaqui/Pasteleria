@@ -18,6 +18,10 @@
 
     </android.support.design.widget.AppBarLayout>
 
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar"
+            />
     <FrameLayout
         android:id="@+id/contenedor_principal"
         android:layout_width="match_parent"

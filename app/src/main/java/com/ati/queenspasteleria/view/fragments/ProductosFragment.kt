@@ -44,6 +44,8 @@ class ProductosFragment() : Fragment() {
         val args = arguments
         val nombre = args.getString("categoria")
 
+        activity.title = nombre
+
         var productosAdapter = ProductosAdapter(
                 buidProductos(),
                 R.layout.cardview_productos,

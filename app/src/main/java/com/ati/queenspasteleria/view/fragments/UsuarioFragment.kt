@@ -6,9 +6,11 @@ import android.support.v4.app.Fragment
 import android.view.*
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toolbar
 
 import com.ati.queenspasteleria.R
 import com.ati.queenspasteleria.Settings.ConfiguracionUsuario
+import kotlinx.android.synthetic.main.app_bar_principal.*
 
 
 /**
@@ -27,6 +29,9 @@ class UsuarioFragment : Fragment() {
         var txWDireccion = view.findViewById<TextView>(R.id.txWDireccion)
         var txWTelefono = view.findViewById<TextView>(R.id.txWTelefono)
         var btCambiarCOntrasenia = view.findViewById<Button>(R.id.btCambiarCOntrasenia)
+
+        activity.title=""
+
 
         var configuracionUsuario = ConfiguracionUsuario()
 

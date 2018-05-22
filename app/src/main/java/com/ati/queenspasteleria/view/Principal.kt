@@ -35,9 +35,7 @@ class Principal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
 
         setSupportActionBar(toolbar)
 
-        supportActionBar!!.title="Queens Pasteleria"
-        supportActionBar!!.subtitle="Categorias"
-
+        this.title="Queens Pasteleria"
 
 
         var transaction = supportFragmentManager.beginTransaction()
